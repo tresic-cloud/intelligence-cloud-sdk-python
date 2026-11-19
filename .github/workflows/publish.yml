@@ -1,0 +1,32 @@
+name: Publish to PyPI
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment: pypi
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - uses: astral-sh/setup-uv@v6
+      - name: Check the tag matches the package version
+        run: |
+          v=$(sed -n 's/^version = "\(.*\)"/\1/p' pyproject.toml | head -1)
+          [ "v$v" = "$GITHUB_REF_NAME" ] || { echo "tag $GITHUB_REF_NAME does not match version $v"; exit 1; }
+      - name: Unit tests
+        run: uv run -q --with pytest --with-editable . pytest -q tests/unit
+      - name: Build
+        run: uv build
+      - name: Publish
+        uses: pypa/gh-action-pypi-publish@release/v1

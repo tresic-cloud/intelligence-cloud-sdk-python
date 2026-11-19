@@ -1,0 +1,6391 @@
+{
+ "operations": {
+  "claimCompanyDomain": {
+   "body": {
+    "required": true,
+    "schema": {
+     "properties": {
+      "domain": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "domain"
+     ],
+     "type": "object"
+    }
+   },
+   "headers": [],
+   "method": "POST",
+   "namespace": "sso",
+   "paged": false,
+   "path": "/companies/{companyId}/domains",
+   "path_params": [
+    "companyId"
+   ],
+   "query": {},
+   "responses": {
+    "200": {
+     "$ref": "#/components/schemas/CompanyDomainResponse"
+    },
+    "201": {
+     "$ref": "#/components/schemas/CompanyDomainResponse"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "Claim a domain"
+  },
+  "connectIdentityProvider": {
+   "body": {
+    "required": true,
+    "schema": {
+     "$ref": "#/components/schemas/IdentityProviderCreate"
+    }
+   },
+   "headers": [],
+   "method": "POST",
+   "namespace": "sso",
+   "paged": false,
+   "path": "/companies/{companyId}/identity-provider",
+   "path_params": [
+    "companyId"
+   ],
+   "query": {},
+   "responses": {
+    "201": {
+     "$ref": "#/components/schemas/IdentityProviderResponse"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "Connect an OpenID Connect provider"
+  },
+  "createAlertRule": {
+   "body": {
+    "required": true,
+    "schema": {
+     "$ref": "#/components/schemas/AlertRuleCreate"
+    }
+   },
+   "headers": [],
+   "method": "POST",
+   "namespace": "first_alert",
+   "paged": false,
+   "path": "/locations/{locationId}/first-alert/rules",
+   "path_params": [
+    "locationId"
+   ],
+   "query": {},
+   "responses": {
+    "201": {
+     "$ref": "#/components/schemas/AlertRuleResponse"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "Create an alert rule"
+  },
+  "createCompany": {
+   "body": {
+    "required": true,
+    "schema": {
+     "$ref": "#/components/schemas/CompanyCreate"
+    }
+   },
+   "headers": [],
+   "method": "POST",
+   "namespace": "companies",
+   "paged": false,
+   "path": "/resellers/{resellerId}/companies",
+   "path_params": [
+    "resellerId"
+   ],
+   "query": {},
+   "responses": {
+    "201": {
+     "$ref": "#/components/schemas/CompanyCreated"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "Create a customer company"
+  },
+  "createCompanyUser": {
+   "body": {
+    "required": true,
+    "schema": {
+     "$ref": "#/components/schemas/UserCreate"
+    }
+   },
+   "headers": [
+    "Idempotency-Key"
+   ],
+   "method": "POST",
+   "namespace": "users",
+   "paged": false,
+   "path": "/companies/{companyId}/users",
+   "path_params": [
+    "companyId"
+   ],
+   "query": {},
+   "responses": {
+    "201": {
+     "$ref": "#/components/schemas/CompanyUserResponse"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "Create a user"
+  },
+  "createConnector": {
+   "body": {
+    "required": true,
+    "schema": {
+     "properties": {
+      "config": {
+       "$ref": "#/components/schemas/NetSapiensConfigInput"
+      },
+      "name": {
+       "type": "string"
+      },
+      "type": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "name",
+      "type",
+      "config"
+     ],
+     "type": "object"
+    }
+   },
+   "headers": [],
+   "method": "POST",
+   "namespace": "connectors",
+   "paged": false,
+   "path": "/locations/{locationId}/connectors",
+   "path_params": [
+    "locationId"
+   ],
+   "query": {},
+   "responses": {
+    "202": {
+     "$ref": "#/components/schemas/ConnectorResponse"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "Create a connector"
+  },
+  "createLocation": {
+   "body": {
+    "required": true,
+    "schema": {
+     "$ref": "#/components/schemas/LocationCreate"
+    }
+   },
+   "headers": [],
+   "method": "POST",
+   "namespace": "locations",
+   "paged": false,
+   "path": "/companies/{companyId}/locations",
+   "path_params": [
+    "companyId"
+   ],
+   "query": {},
+   "responses": {
+    "201": {
+     "$ref": "#/components/schemas/LocationResponse"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "Create a location"
+  },
+  "createUserGroup": {
+   "body": {
+    "required": true,
+    "schema": {
+     "properties": {
+      "group_name": {
+       "type": "string"
+      },
+      "member_ids": {
+       "items": {
+        "type": "string"
+       },
+       "type": "array"
+      }
+     },
+     "required": [
+      "group_name"
+     ],
+     "type": "object"
+    }
+   },
+   "headers": [],
+   "method": "POST",
+   "namespace": "groups",
+   "paged": false,
+   "path": "/locations/{locationId}/user-groups",
+   "path_params": [
+    "locationId"
+   ],
+   "query": {},
+   "responses": {
+    "201": {
+     "$ref": "#/components/schemas/UserGroupResponse"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "Create a group"
+  },
+  "deactivateCompany": {
+   "body": null,
+   "headers": [],
+   "method": "POST",
+   "namespace": "companies",
+   "paged": false,
+   "path": "/companies/{companyId}/deactivate",
+   "path_params": [
+    "companyId"
+   ],
+   "query": {},
+   "responses": {
+    "200": {
+     "$ref": "#/components/schemas/CompanyResponse"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "Deactivate a company"
+  },
+  "deactivateCompanyUser": {
+   "body": null,
+   "headers": [],
+   "method": "POST",
+   "namespace": "users",
+   "paged": false,
+   "path": "/companies/{companyId}/users/{userId}/deactivate",
+   "path_params": [
+    "companyId",
+    "userId"
+   ],
+   "query": {},
+   "responses": {
+    "200": {
+     "$ref": "#/components/schemas/CompanyUserResponse"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "Deactivate a user"
+  },
+  "deactivateConnector": {
+   "body": null,
+   "headers": [],
+   "method": "POST",
+   "namespace": "connectors",
+   "paged": false,
+   "path": "/locations/{locationId}/connectors/{connectorId}/deactivate",
+   "path_params": [
+    "locationId",
+    "connectorId"
+   ],
+   "query": {},
+   "responses": {
+    "202": {
+     "$ref": "#/components/schemas/ConnectorResponse"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "Stop a connector"
+  },
+  "deactivateLocation": {
+   "body": null,
+   "headers": [],
+   "method": "POST",
+   "namespace": "locations",
+   "paged": false,
+   "path": "/companies/{companyId}/locations/{locationId}/deactivate",
+   "path_params": [
+    "companyId",
+    "locationId"
+   ],
+   "query": {},
+   "responses": {
+    "200": {
+     "$ref": "#/components/schemas/LocationResponse"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "Deactivate a location"
+  },
+  "deleteAlertRule": {
+   "body": null,
+   "headers": [],
+   "method": "DELETE",
+   "namespace": "first_alert",
+   "paged": false,
+   "path": "/locations/{locationId}/first-alert/rules/{ruleId}",
+   "path_params": [
+    "locationId",
+    "ruleId"
+   ],
+   "query": {},
+   "responses": {
+    "204": null
+   },
+   "role": "reseller_admin",
+   "summary": "Delete an alert rule"
+  },
+  "deleteResellerSmtpSettings": {
+   "body": null,
+   "headers": [],
+   "method": "DELETE",
+   "namespace": "resellers",
+   "paged": false,
+   "path": "/resellers/{resellerId}/smtp-settings",
+   "path_params": [
+    "resellerId"
+   ],
+   "query": {},
+   "responses": {
+    "204": null
+   },
+   "role": "reseller_admin",
+   "summary": "Remove outbound email (SMTP) settings"
+  },
+  "deleteUserGroup": {
+   "body": null,
+   "headers": [],
+   "method": "DELETE",
+   "namespace": "groups",
+   "paged": false,
+   "path": "/locations/{locationId}/user-groups/{groupId}",
+   "path_params": [
+    "locationId",
+    "groupId"
+   ],
+   "query": {
+    "force": {
+     "required": false,
+     "type": "boolean"
+    }
+   },
+   "responses": {
+    "204": null
+   },
+   "role": "reseller_admin",
+   "summary": "Delete a group"
+  },
+  "disableUserProduct": {
+   "body": null,
+   "headers": [],
+   "method": "POST",
+   "namespace": "products",
+   "paged": false,
+   "path": "/locations/{locationId}/users/{userId}/products/{productKey}/disable",
+   "path_params": [
+    "locationId",
+    "userId",
+    "productKey"
+   ],
+   "query": {},
+   "responses": {
+    "200": {
+     "$ref": "#/components/schemas/ProductStateResponse"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "Turn a product off for a user"
+  },
+  "disconnectIdentityProvider": {
+   "body": null,
+   "headers": [],
+   "method": "DELETE",
+   "namespace": "sso",
+   "paged": false,
+   "path": "/companies/{companyId}/identity-provider",
+   "path_params": [
+    "companyId"
+   ],
+   "query": {},
+   "responses": {
+    "204": null
+   },
+   "role": "reseller_admin",
+   "summary": "Disconnect the identity provider"
+  },
+  "duplicateAlertRule": {
+   "body": null,
+   "headers": [],
+   "method": "POST",
+   "namespace": "first_alert",
+   "paged": false,
+   "path": "/locations/{locationId}/first-alert/rules/{ruleId}/duplicate",
+   "path_params": [
+    "locationId",
+    "ruleId"
+   ],
+   "query": {},
+   "responses": {
+    "201": {
+     "$ref": "#/components/schemas/AlertRuleResponse"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "Copy an alert rule"
+  },
+  "enableUserProduct": {
+   "body": null,
+   "headers": [],
+   "method": "POST",
+   "namespace": "products",
+   "paged": false,
+   "path": "/locations/{locationId}/users/{userId}/products/{productKey}/enable",
+   "path_params": [
+    "locationId",
+    "userId",
+    "productKey"
+   ],
+   "query": {},
+   "responses": {
+    "200": {
+     "$ref": "#/components/schemas/ProductStateResponse"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "Turn a product on for a user"
+  },
+  "getAfterCallWebhook": {
+   "body": null,
+   "headers": [],
+   "method": "GET",
+   "namespace": "webhooks",
+   "paged": false,
+   "path": "/locations/{locationId}/after-call/automation",
+   "path_params": [
+    "locationId"
+   ],
+   "query": {},
+   "responses": {
+    "200": {
+     "$ref": "#/components/schemas/AfterCallWebhookResponse"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "Read the After Call webhook"
+  },
+  "getAlertNotificationPreferences": {
+   "body": null,
+   "headers": [],
+   "method": "GET",
+   "namespace": "first_alert",
+   "paged": false,
+   "path": "/locations/{locationId}/users/{userId}/first-alert/notification-preferences",
+   "path_params": [
+    "locationId",
+    "userId"
+   ],
+   "query": {},
+   "responses": {
+    "200": {
+     "$ref": "#/components/schemas/AlertNotificationPreferences"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "Read a user's alert email and digest"
+  },
+  "getAlertRule": {
+   "body": null,
+   "headers": [],
+   "method": "GET",
+   "namespace": "first_alert",
+   "paged": false,
+   "path": "/locations/{locationId}/first-alert/rules/{ruleId}",
+   "path_params": [
+    "locationId",
+    "ruleId"
+   ],
+   "query": {},
+   "responses": {
+    "200": {
+     "$ref": "#/components/schemas/AlertRuleResponse"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "Read an alert rule"
+  },
+  "getAlertsDashboard": {
+   "body": null,
+   "headers": [],
+   "method": "GET",
+   "namespace": "alerts",
+   "paged": false,
+   "path": "/alerts/dashboard",
+   "path_params": [],
+   "query": {
+    "company_id": {
+     "format": "uuid",
+     "required": false,
+     "type": "string"
+    },
+    "date_from": {
+     "format": "date-time",
+     "required": false,
+     "type": "string"
+    },
+    "date_to": {
+     "format": "date-time",
+     "required": false,
+     "type": "string"
+    },
+    "location_id": {
+     "items": {
+      "format": "uuid",
+      "type": "string"
+     },
+     "maxItems": 100,
+     "required": false,
+     "type": "array"
+    }
+   },
+   "responses": {
+    "200": {
+     "$ref": "#/components/schemas/AlertsDashboardResponse"
+    }
+   },
+   "role": "frontline_user",
+   "summary": "Alert totals"
+  },
+  "getCall": {
+   "body": null,
+   "headers": [],
+   "method": "GET",
+   "namespace": "calls",
+   "paged": false,
+   "path": "/calls/{callId}",
+   "path_params": [
+    "callId"
+   ],
+   "query": {},
+   "responses": {
+    "200": {
+     "$ref": "#/components/schemas/CallDetailResponse"
+    }
+   },
+   "role": "frontline_user",
+   "summary": "Read a call"
+  },
+  "getCallTranscript": {
+   "body": null,
+   "headers": [],
+   "method": "GET",
+   "namespace": "calls",
+   "paged": false,
+   "path": "/calls/{callId}/transcript",
+   "path_params": [
+    "callId"
+   ],
+   "query": {},
+   "responses": {
+    "200": {
+     "$ref": "#/components/schemas/TranscriptResponse"
+    }
+   },
+   "role": "frontline_user",
+   "summary": "Read a call's transcript"
+  },
+  "getCompaniesMfaSummary": {
+   "body": null,
+   "headers": [],
+   "method": "GET",
+   "namespace": "companies",
+   "paged": false,
+   "path": "/resellers/{resellerId}/companies/mfa",
+   "path_params": [
+    "resellerId"
+   ],
+   "query": {},
+   "responses": {
+    "200": {
+     "properties": {
+      "data": {
+       "properties": {
+        "companies_mfa_default": {
+         "type": "boolean"
+        },
+        "mfa_available": {
+         "type": "boolean"
+        },
+        "total_active": {
+         "type": "integer"
+        },
+        "with_mfa_required": {
+         "type": "integer"
+        }
+       },
+       "type": "object"
+      }
+     },
+     "type": "object"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "Read the MFA default for new companies"
+  },
+  "getCompany": {
+   "body": null,
+   "headers": [],
+   "method": "GET",
+   "namespace": "companies",
+   "paged": false,
+   "path": "/companies/{companyId}",
+   "path_params": [
+    "companyId"
+   ],
+   "query": {},
+   "responses": {
+    "200": {
+     "$ref": "#/components/schemas/CompanyResponse"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "Read a company"
+  },
+  "getCompanyBranding": {
+   "body": null,
+   "headers": [],
+   "method": "GET",
+   "namespace": "companies",
+   "paged": false,
+   "path": "/companies/{companyId}/branding",
+   "path_params": [
+    "companyId"
+   ],
+   "query": {},
+   "responses": {
+    "200": {
+     "$ref": "#/components/schemas/CompanyBrandingResponse"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "Read company branding overrides"
+  },
+  "getCompanySecuritySettings": {
+   "body": null,
+   "headers": [],
+   "method": "GET",
+   "namespace": "companies",
+   "paged": false,
+   "path": "/companies/{companyId}/security-settings",
+   "path_params": [
+    "companyId"
+   ],
+   "query": {},
+   "responses": {
+    "200": {
+     "$ref": "#/components/schemas/CompanySecuritySettingsResponse"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "Read a company's security settings"
+  },
+  "getCompanyUser": {
+   "body": null,
+   "headers": [],
+   "method": "GET",
+   "namespace": "users",
+   "paged": false,
+   "path": "/companies/{companyId}/users/{userId}",
+   "path_params": [
+    "companyId",
+    "userId"
+   ],
+   "query": {},
+   "responses": {
+    "200": {
+     "$ref": "#/components/schemas/CompanyUserResponse"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "Read a user"
+  },
+  "getConnector": {
+   "body": null,
+   "headers": [],
+   "method": "GET",
+   "namespace": "connectors",
+   "paged": false,
+   "path": "/locations/{locationId}/connectors/{connectorId}",
+   "path_params": [
+    "locationId",
+    "connectorId"
+   ],
+   "query": {},
+   "responses": {
+    "200": {
+     "$ref": "#/components/schemas/ConnectorResponse"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "Read a connector"
+  },
+  "getFirstAlertConfig": {
+   "body": null,
+   "headers": [],
+   "method": "GET",
+   "namespace": "first_alert",
+   "paged": false,
+   "path": "/locations/{locationId}/first-alert/config",
+   "path_params": [
+    "locationId"
+   ],
+   "query": {},
+   "responses": {
+    "200": {
+     "$ref": "#/components/schemas/FirstAlertConfigResponse"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "Read monitored numbers and the alert webhook"
+  },
+  "getIdentityProvider": {
+   "body": null,
+   "headers": [],
+   "method": "GET",
+   "namespace": "sso",
+   "paged": false,
+   "path": "/companies/{companyId}/identity-provider",
+   "path_params": [
+    "companyId"
+   ],
+   "query": {},
+   "responses": {
+    "200": {
+     "$ref": "#/components/schemas/IdentityProviderResponse"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "Read the identity provider connection"
+  },
+  "getInsightsDashboard": {
+   "body": null,
+   "headers": [],
+   "method": "GET",
+   "namespace": "insights",
+   "paged": false,
+   "path": "/insights/dashboard",
+   "path_params": [],
+   "query": {
+    "company_id": {
+     "format": "uuid",
+     "required": false,
+     "type": "string"
+    },
+    "end": {
+     "format": "date-time",
+     "required": true,
+     "type": "string"
+    },
+    "location_id": {
+     "items": {
+      "format": "uuid",
+      "type": "string"
+     },
+     "maxItems": 100,
+     "required": false,
+     "type": "array"
+    },
+    "start": {
+     "format": "date-time",
+     "required": true,
+     "type": "string"
+    },
+    "trending_limit": {
+     "maximum": 10,
+     "minimum": 1,
+     "required": false,
+     "type": "integer"
+    }
+   },
+   "responses": {
+    "200": {
+     "$ref": "#/components/schemas/InsightsDashboardResponse"
+    }
+   },
+   "role": "frontline_user",
+   "summary": "Insights Hub dashboard"
+  },
+  "getInsightsHubConfig": {
+   "body": null,
+   "headers": [],
+   "method": "GET",
+   "namespace": "insights_hub",
+   "paged": false,
+   "path": "/locations/{locationId}/insights-hub/config",
+   "path_params": [
+    "locationId"
+   ],
+   "query": {},
+   "responses": {
+    "200": {
+     "$ref": "#/components/schemas/InsightsHubConfigResponse"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "Read Insights Hub coverage"
+  },
+  "getInsightsHubSetup": {
+   "body": null,
+   "headers": [],
+   "method": "GET",
+   "namespace": "insights_hub",
+   "paged": false,
+   "path": "/locations/{locationId}/insights-hub/setup",
+   "path_params": [
+    "locationId"
+   ],
+   "query": {},
+   "responses": {
+    "200": {
+     "$ref": "#/components/schemas/InsightsHubSetupResponse"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "Read Insights Hub setup"
+  },
+  "getLocation": {
+   "body": null,
+   "headers": [],
+   "method": "GET",
+   "namespace": "locations",
+   "paged": false,
+   "path": "/companies/{companyId}/locations/{locationId}",
+   "path_params": [
+    "companyId",
+    "locationId"
+   ],
+   "query": {},
+   "responses": {
+    "200": {
+     "$ref": "#/components/schemas/LocationResponse"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "Read a location"
+  },
+  "getLocationUser": {
+   "body": null,
+   "headers": [],
+   "method": "GET",
+   "namespace": "users",
+   "paged": false,
+   "path": "/locations/{locationId}/users/{userId}",
+   "path_params": [
+    "locationId",
+    "userId"
+   ],
+   "query": {},
+   "responses": {
+    "200": {
+     "$ref": "#/components/schemas/LocationUserResponse"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "Read a user at a location"
+  },
+  "getMe": {
+   "body": null,
+   "headers": [],
+   "method": "GET",
+   "namespace": "account",
+   "paged": false,
+   "path": "/me",
+   "path_params": [],
+   "query": {},
+   "responses": {
+    "200": {
+     "$ref": "#/components/schemas/Me"
+    }
+   },
+   "role": "frontline_user",
+   "summary": "Who is signed in"
+  },
+  "getResellerBranding": {
+   "body": null,
+   "headers": [],
+   "method": "GET",
+   "namespace": "resellers",
+   "paged": false,
+   "path": "/resellers/{resellerId}/branding",
+   "path_params": [
+    "resellerId"
+   ],
+   "query": {},
+   "responses": {
+    "200": {
+     "$ref": "#/components/schemas/ResellerBrandingResponse"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "Read reseller branding"
+  },
+  "getResellerSmtpSettings": {
+   "body": null,
+   "headers": [],
+   "method": "GET",
+   "namespace": "resellers",
+   "paged": false,
+   "path": "/resellers/{resellerId}/smtp-settings",
+   "path_params": [
+    "resellerId"
+   ],
+   "query": {},
+   "responses": {
+    "200": {
+     "$ref": "#/components/schemas/SmtpSettingsResponse"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "Read outbound email (SMTP) settings"
+  },
+  "getUserAfterCallSettings": {
+   "body": null,
+   "headers": [],
+   "method": "GET",
+   "namespace": "after_call_settings",
+   "paged": false,
+   "path": "/locations/{locationId}/users/{userId}/after-call-settings",
+   "path_params": [
+    "locationId",
+    "userId"
+   ],
+   "query": {},
+   "responses": {
+    "200": {
+     "$ref": "#/components/schemas/AfterCallSettingsResponse"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "Read a user's After Call settings"
+  },
+  "getUserGroup": {
+   "body": null,
+   "headers": [],
+   "method": "GET",
+   "namespace": "groups",
+   "paged": false,
+   "path": "/locations/{locationId}/user-groups/{groupId}",
+   "path_params": [
+    "locationId",
+    "groupId"
+   ],
+   "query": {},
+   "responses": {
+    "200": {
+     "$ref": "#/components/schemas/UserGroupResponse"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "Read a group with its members"
+  },
+  "getUserGroupMembership": {
+   "body": null,
+   "headers": [],
+   "method": "GET",
+   "namespace": "groups",
+   "paged": false,
+   "path": "/locations/{locationId}/users/{userId}/group-membership",
+   "path_params": [
+    "locationId",
+    "userId"
+   ],
+   "query": {},
+   "responses": {
+    "200": {
+     "$ref": "#/components/schemas/GroupMembershipList"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "A user's groups at a location"
+  },
+  "getUserInsightsHubAccess": {
+   "body": null,
+   "headers": [],
+   "method": "GET",
+   "namespace": "insights_hub",
+   "paged": false,
+   "path": "/locations/{locationId}/users/{userId}/insights-hub/access",
+   "path_params": [
+    "locationId",
+    "userId"
+   ],
+   "query": {},
+   "responses": {
+    "200": {
+     "properties": {
+      "data": {
+       "properties": {
+        "attributes": {
+         "properties": {
+          "enabled": {
+           "type": "boolean"
+          },
+          "group_name": {
+           "type": [
+            "string",
+            "null"
+           ]
+          }
+         },
+         "type": "object"
+        },
+        "type": {
+         "type": "string"
+        }
+       },
+       "type": "object"
+      }
+     },
+     "type": "object"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "Check a user's Insights Hub access"
+  },
+  "getUserNumberMappings": {
+   "body": null,
+   "headers": [],
+   "method": "GET",
+   "namespace": "users",
+   "paged": false,
+   "path": "/companies/{companyId}/users/{userId}/connector-mappings",
+   "path_params": [
+    "companyId",
+    "userId"
+   ],
+   "query": {},
+   "responses": {
+    "200": {
+     "properties": {
+      "data": {
+       "items": {
+        "$ref": "#/components/schemas/NumberMapping"
+       },
+       "type": "array"
+      }
+     },
+     "type": "object"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "Read a user's numbers"
+  },
+  "listAlertRules": {
+   "body": null,
+   "headers": [],
+   "method": "GET",
+   "namespace": "first_alert",
+   "paged": true,
+   "path": "/locations/{locationId}/first-alert/rules",
+   "path_params": [
+    "locationId"
+   ],
+   "query": {
+    "cursor": {
+     "required": false,
+     "type": "string"
+    },
+    "limit": {
+     "maximum": 100,
+     "minimum": 1,
+     "required": false,
+     "type": "integer"
+    }
+   },
+   "responses": {
+    "200": {
+     "$ref": "#/components/schemas/AlertRuleList"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "List a location's alert rules"
+  },
+  "listAlerts": {
+   "body": null,
+   "headers": [],
+   "method": "GET",
+   "namespace": "alerts",
+   "paged": true,
+   "path": "/alerts",
+   "path_params": [],
+   "query": {
+    "company_id": {
+     "format": "uuid",
+     "required": false,
+     "type": "string"
+    },
+    "cursor": {
+     "required": false,
+     "type": "string"
+    },
+    "date_from": {
+     "format": "date-time",
+     "required": false,
+     "type": "string"
+    },
+    "date_to": {
+     "format": "date-time",
+     "required": false,
+     "type": "string"
+    },
+    "keyword": {
+     "required": false,
+     "type": "string"
+    },
+    "limit": {
+     "maximum": 100,
+     "minimum": 1,
+     "required": false,
+     "type": "integer"
+    },
+    "location_id": {
+     "items": {
+      "format": "uuid",
+      "type": "string"
+     },
+     "maxItems": 100,
+     "required": false,
+     "type": "array"
+    },
+    "numbers": {
+     "items": {
+      "pattern": "^[A-Za-z0-9@#]+$",
+      "type": "string"
+     },
+     "maxItems": 25,
+     "required": false,
+     "type": "array"
+    },
+    "search": {
+     "required": false,
+     "type": "string"
+    },
+    "sentiment": {
+     "enum": [
+      "crisis",
+      "very_negative",
+      "negative",
+      "mildly_negative",
+      "below_neutral",
+      "neutral",
+      "positive",
+      "none"
+     ],
+     "required": false,
+     "type": "string"
+    },
+    "topic": {
+     "required": false,
+     "type": "string"
+    }
+   },
+   "responses": {
+    "200": {
+     "$ref": "#/components/schemas/AlertList"
+    }
+   },
+   "role": "frontline_user",
+   "summary": "List alerts"
+  },
+  "listCalls": {
+   "body": null,
+   "headers": [],
+   "method": "GET",
+   "namespace": "calls",
+   "paged": true,
+   "path": "/calls",
+   "path_params": [],
+   "query": {
+    "company_id": {
+     "format": "uuid",
+     "required": false,
+     "type": "string"
+    },
+    "cursor": {
+     "required": false,
+     "type": "string"
+    },
+    "date_from": {
+     "format": "date-time",
+     "required": false,
+     "type": "string"
+    },
+    "date_to": {
+     "format": "date-time",
+     "required": false,
+     "type": "string"
+    },
+    "has_open_tasks": {
+     "enum": [
+      "true"
+     ],
+     "required": false,
+     "type": "string"
+    },
+    "limit": {
+     "maximum": 100,
+     "minimum": 1,
+     "required": false,
+     "type": "integer"
+    },
+    "location_id": {
+     "items": {
+      "format": "uuid",
+      "type": "string"
+     },
+     "maxItems": 100,
+     "required": false,
+     "type": "array"
+    },
+    "multi_leg": {
+     "required": false,
+     "type": "boolean"
+    },
+    "search": {
+     "required": false,
+     "type": "string"
+    },
+    "sentiment": {
+     "enum": [
+      "crisis",
+      "very_negative",
+      "negative",
+      "mildly_negative",
+      "below_neutral",
+      "neutral",
+      "positive",
+      "none"
+     ],
+     "required": false,
+     "type": "string"
+    },
+    "status": {
+     "enum": [
+      "completed",
+      "missed",
+      "voicemail",
+      "failed",
+      "cancelled"
+     ],
+     "required": false,
+     "type": "string"
+    }
+   },
+   "responses": {
+    "200": {
+     "$ref": "#/components/schemas/CallList"
+    }
+   },
+   "role": "frontline_user",
+   "summary": "List calls"
+  },
+  "listCompanies": {
+   "body": null,
+   "headers": [],
+   "method": "GET",
+   "namespace": "companies",
+   "paged": true,
+   "path": "/resellers/{resellerId}/companies",
+   "path_params": [
+    "resellerId"
+   ],
+   "query": {
+    "cursor": {
+     "required": false,
+     "type": "string"
+    },
+    "is_active": {
+     "required": false,
+     "type": "boolean"
+    },
+    "limit": {
+     "maximum": 100,
+     "minimum": 1,
+     "required": false,
+     "type": "integer"
+    },
+    "search": {
+     "required": false,
+     "type": "string"
+    }
+   },
+   "responses": {
+    "200": {
+     "$ref": "#/components/schemas/CompanyList"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "List customer companies"
+  },
+  "listCompanyConnectors": {
+   "body": null,
+   "headers": [],
+   "method": "GET",
+   "namespace": "connectors",
+   "paged": true,
+   "path": "/companies/{companyId}/connectors",
+   "path_params": [
+    "companyId"
+   ],
+   "query": {
+    "cursor": {
+     "required": false,
+     "type": "string"
+    },
+    "limit": {
+     "maximum": 100,
+     "minimum": 1,
+     "required": false,
+     "type": "integer"
+    },
+    "search": {
+     "required": false,
+     "type": "string"
+    },
+    "status": {
+     "enum": [
+      "connecting",
+      "active",
+      "error",
+      "deactivating",
+      "inactive"
+     ],
+     "required": false,
+     "type": "string"
+    },
+    "type": {
+     "enum": [
+      "netsapiens"
+     ],
+     "required": false,
+     "type": "string"
+    }
+   },
+   "responses": {
+    "200": {
+     "$ref": "#/components/schemas/CompanyConnectorList"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "List a company's connectors"
+  },
+  "listCompanyDomains": {
+   "body": null,
+   "headers": [],
+   "method": "GET",
+   "namespace": "sso",
+   "paged": false,
+   "path": "/companies/{companyId}/domains",
+   "path_params": [
+    "companyId"
+   ],
+   "query": {},
+   "responses": {
+    "200": {
+     "properties": {
+      "data": {
+       "items": {
+        "$ref": "#/components/schemas/CompanyDomain"
+       },
+       "type": "array"
+      }
+     },
+     "type": "object"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "List claimed domains"
+  },
+  "listCompanyLocations": {
+   "body": null,
+   "headers": [],
+   "method": "GET",
+   "namespace": "locations",
+   "paged": true,
+   "path": "/companies/{companyId}/locations",
+   "path_params": [
+    "companyId"
+   ],
+   "query": {
+    "cursor": {
+     "required": false,
+     "type": "string"
+    },
+    "is_active": {
+     "required": false,
+     "type": "boolean"
+    },
+    "limit": {
+     "maximum": 100,
+     "minimum": 1,
+     "required": false,
+     "type": "integer"
+    },
+    "offset": {
+     "minimum": 0,
+     "required": false,
+     "type": "integer"
+    },
+    "search": {
+     "required": false,
+     "type": "string"
+    }
+   },
+   "responses": {
+    "200": {
+     "$ref": "#/components/schemas/LocationList"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "List a company's locations"
+  },
+  "listCompanyProducts": {
+   "body": null,
+   "headers": [],
+   "method": "GET",
+   "namespace": "products",
+   "paged": false,
+   "path": "/companies/{companyId}/products",
+   "path_params": [
+    "companyId"
+   ],
+   "query": {},
+   "responses": {
+    "200": {
+     "$ref": "#/components/schemas/ProductStateList"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "Company products"
+  },
+  "listCompanyUsers": {
+   "body": null,
+   "headers": [],
+   "method": "GET",
+   "namespace": "users",
+   "paged": true,
+   "path": "/companies/{companyId}/users",
+   "path_params": [
+    "companyId"
+   ],
+   "query": {
+    "cursor": {
+     "required": false,
+     "type": "string"
+    },
+    "limit": {
+     "maximum": 100,
+     "minimum": 1,
+     "required": false,
+     "type": "integer"
+    },
+    "location_id": {
+     "items": {
+      "format": "uuid",
+      "type": "string"
+     },
+     "maxItems": 100,
+     "required": false,
+     "type": "array"
+    },
+    "role": {
+     "enum": [
+      "customer_admin",
+      "frontline_user"
+     ],
+     "required": false,
+     "type": "string"
+    },
+    "search": {
+     "required": false,
+     "type": "string"
+    },
+    "status": {
+     "enum": [
+      "invited",
+      "active",
+      "deactivated"
+     ],
+     "required": false,
+     "type": "string"
+    }
+   },
+   "responses": {
+    "200": {
+     "$ref": "#/components/schemas/CompanyUserList"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "List a company's users"
+  },
+  "listConnectorTypes": {
+   "body": null,
+   "headers": [],
+   "method": "GET",
+   "namespace": "connectors",
+   "paged": false,
+   "path": "/connector-types",
+   "path_params": [],
+   "query": {},
+   "responses": {
+    "200": {
+     "properties": {
+      "data": {
+       "items": {
+        "properties": {
+         "key": {
+          "type": "string"
+         },
+         "name": {
+          "type": "string"
+         }
+        },
+        "type": "object"
+       },
+       "type": "array"
+      }
+     },
+     "type": "object"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "List connector types"
+  },
+  "listDomainVerifications": {
+   "body": null,
+   "headers": [],
+   "method": "GET",
+   "namespace": "sso",
+   "paged": false,
+   "path": "/companies/{companyId}/domains/{domainId}/verifications",
+   "path_params": [
+    "companyId",
+    "domainId"
+   ],
+   "query": {},
+   "responses": {
+    "200": {
+     "properties": {
+      "data": {
+       "items": {
+        "$ref": "#/components/schemas/DomainVerification"
+       },
+       "type": "array"
+      }
+     },
+     "type": "object"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "List verification attempts"
+  },
+  "listLocationConnectors": {
+   "body": null,
+   "headers": [],
+   "method": "GET",
+   "namespace": "connectors",
+   "paged": true,
+   "path": "/locations/{locationId}/connectors",
+   "path_params": [
+    "locationId"
+   ],
+   "query": {
+    "cursor": {
+     "required": false,
+     "type": "string"
+    },
+    "limit": {
+     "maximum": 100,
+     "minimum": 1,
+     "required": false,
+     "type": "integer"
+    },
+    "search": {
+     "required": false,
+     "type": "string"
+    },
+    "status": {
+     "enum": [
+      "connecting",
+      "active",
+      "error",
+      "deactivating",
+      "inactive"
+     ],
+     "required": false,
+     "type": "string"
+    }
+   },
+   "responses": {
+    "200": {
+     "$ref": "#/components/schemas/ConnectorList"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "List a location's connectors"
+  },
+  "listLocationUsers": {
+   "body": null,
+   "headers": [],
+   "method": "GET",
+   "namespace": "users",
+   "paged": true,
+   "path": "/locations/{locationId}/users",
+   "path_params": [
+    "locationId"
+   ],
+   "query": {
+    "cursor": {
+     "required": false,
+     "type": "string"
+    },
+    "limit": {
+     "maximum": 100,
+     "minimum": 1,
+     "required": false,
+     "type": "integer"
+    },
+    "search": {
+     "required": false,
+     "type": "string"
+    },
+    "status": {
+     "enum": [
+      "invited",
+      "active",
+      "deactivated"
+     ],
+     "required": false,
+     "type": "string"
+    }
+   },
+   "responses": {
+    "200": {
+     "$ref": "#/components/schemas/LocationUserList"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "List a location's users with products and groups"
+  },
+  "listProducts": {
+   "body": null,
+   "headers": [],
+   "method": "GET",
+   "namespace": "products",
+   "paged": false,
+   "path": "/products",
+   "path_params": [],
+   "query": {},
+   "responses": {
+    "200": {
+     "properties": {
+      "data": {
+       "items": {
+        "properties": {
+         "key": {
+          "$ref": "#/components/schemas/ProductKey"
+         },
+         "name": {
+          "type": "string"
+         }
+        },
+        "type": "object"
+       },
+       "type": "array"
+      }
+     },
+     "type": "object"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "List products"
+  },
+  "listTasks": {
+   "body": null,
+   "headers": [],
+   "method": "GET",
+   "namespace": "tasks",
+   "paged": true,
+   "path": "/tasks",
+   "path_params": [],
+   "query": {
+    "call_id": {
+     "format": "uuid",
+     "required": false,
+     "type": "string"
+    },
+    "company_id": {
+     "format": "uuid",
+     "required": false,
+     "type": "string"
+    },
+    "cursor": {
+     "required": false,
+     "type": "string"
+    },
+    "date_from": {
+     "format": "date-time",
+     "required": false,
+     "type": "string"
+    },
+    "date_to": {
+     "format": "date-time",
+     "required": false,
+     "type": "string"
+    },
+    "due_on": {
+     "format": "date",
+     "required": false,
+     "type": "string"
+    },
+    "limit": {
+     "maximum": 100,
+     "minimum": 1,
+     "required": false,
+     "type": "integer"
+    },
+    "location_id": {
+     "items": {
+      "format": "uuid",
+      "type": "string"
+     },
+     "maxItems": 100,
+     "required": false,
+     "type": "array"
+    },
+    "search": {
+     "required": false,
+     "type": "string"
+    },
+    "status": {
+     "enum": [
+      "pending",
+      "in_progress",
+      "done",
+      "overdue",
+      "open"
+     ],
+     "required": false,
+     "type": "string"
+    },
+    "task_id": {
+     "format": "uuid",
+     "required": false,
+     "type": "string"
+    },
+    "today_start": {
+     "format": "date-time",
+     "required": false,
+     "type": "string"
+    }
+   },
+   "responses": {
+    "200": {
+     "$ref": "#/components/schemas/TaskList"
+    }
+   },
+   "role": "frontline_user",
+   "summary": "List tasks"
+  },
+  "listTopicCalls": {
+   "body": null,
+   "headers": [],
+   "method": "GET",
+   "namespace": "insights",
+   "paged": true,
+   "path": "/insights/topics/{slug}/calls",
+   "path_params": [
+    "slug"
+   ],
+   "query": {
+    "company_id": {
+     "format": "uuid",
+     "required": false,
+     "type": "string"
+    },
+    "cursor": {
+     "required": false,
+     "type": "string"
+    },
+    "date_from": {
+     "format": "date-time",
+     "required": false,
+     "type": "string"
+    },
+    "date_to": {
+     "format": "date-time",
+     "required": false,
+     "type": "string"
+    },
+    "limit": {
+     "maximum": 100,
+     "minimum": 1,
+     "required": false,
+     "type": "integer"
+    },
+    "location_id": {
+     "items": {
+      "format": "uuid",
+      "type": "string"
+     },
+     "maxItems": 100,
+     "required": false,
+     "type": "array"
+    },
+    "outcome": {
+     "enum": [
+      "completed",
+      "missed",
+      "pending"
+     ],
+     "required": false,
+     "type": "string"
+    },
+    "search": {
+     "required": false,
+     "type": "string"
+    },
+    "sentiment": {
+     "enum": [
+      "positive",
+      "neutral",
+      "negative"
+     ],
+     "required": false,
+     "type": "string"
+    }
+   },
+   "responses": {
+    "200": {
+     "$ref": "#/components/schemas/TopicCallList"
+    }
+   },
+   "role": "frontline_user",
+   "summary": "Calls for one topic"
+  },
+  "listUserGroups": {
+   "body": null,
+   "headers": [],
+   "method": "GET",
+   "namespace": "groups",
+   "paged": true,
+   "path": "/locations/{locationId}/user-groups",
+   "path_params": [
+    "locationId"
+   ],
+   "query": {
+    "cursor": {
+     "required": false,
+     "type": "string"
+    },
+    "limit": {
+     "maximum": 100,
+     "minimum": 1,
+     "required": false,
+     "type": "integer"
+    },
+    "search": {
+     "required": false,
+     "type": "string"
+    }
+   },
+   "responses": {
+    "200": {
+     "$ref": "#/components/schemas/UserGroupList"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "List a location's groups"
+  },
+  "listUserProducts": {
+   "body": null,
+   "headers": [],
+   "method": "GET",
+   "namespace": "products",
+   "paged": false,
+   "path": "/companies/{companyId}/users/{userId}/products",
+   "path_params": [
+    "companyId",
+    "userId"
+   ],
+   "query": {},
+   "responses": {
+    "200": {
+     "$ref": "#/components/schemas/ProductStateList"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "A user's products"
+  },
+  "listVerticals": {
+   "body": null,
+   "headers": [],
+   "method": "GET",
+   "namespace": "locations",
+   "paged": false,
+   "path": "/verticals",
+   "path_params": [],
+   "query": {},
+   "responses": {
+    "200": {
+     "properties": {
+      "data": {
+       "items": {
+        "properties": {
+         "description": {
+          "type": "string"
+         },
+         "display_order": {
+          "type": "integer"
+         },
+         "id": {
+          "type": "string"
+         },
+         "is_active": {
+          "type": "boolean"
+         },
+         "key": {
+          "type": "string"
+         },
+         "name": {
+          "type": "string"
+         }
+        },
+        "type": "object"
+       },
+       "type": "array"
+      }
+     },
+     "type": "object"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "List industries"
+  },
+  "listVisibleLocations": {
+   "body": null,
+   "headers": [],
+   "method": "GET",
+   "namespace": "account",
+   "paged": true,
+   "path": "/locations",
+   "path_params": [],
+   "query": {
+    "company_id": {
+     "format": "uuid",
+     "required": false,
+     "type": "string"
+    },
+    "cursor": {
+     "required": false,
+     "type": "string"
+    },
+    "is_active": {
+     "required": false,
+     "type": "boolean"
+    },
+    "limit": {
+     "maximum": 100,
+     "minimum": 1,
+     "required": false,
+     "type": "integer"
+    },
+    "offset": {
+     "minimum": 0,
+     "required": false,
+     "type": "integer"
+    },
+    "search": {
+     "required": false,
+     "type": "string"
+    }
+   },
+   "responses": {
+    "200": {
+     "$ref": "#/components/schemas/LocationList"
+    }
+   },
+   "role": "frontline_user",
+   "summary": "Locations this login can see"
+  },
+  "login": {
+   "body": {
+    "required": true,
+    "schema": {
+     "$ref": "#/components/schemas/LoginRequest"
+    }
+   },
+   "headers": [],
+   "method": "POST",
+   "namespace": "auth",
+   "paged": false,
+   "path": "/auth/login",
+   "path_params": [],
+   "query": {},
+   "responses": {
+    "200": {
+     "oneOf": [
+      {
+       "$ref": "#/components/schemas/TokenResponse"
+      },
+      {
+       "$ref": "#/components/schemas/MfaRequired"
+      }
+     ]
+    }
+   },
+   "role": "frontline_user",
+   "summary": "Sign in"
+  },
+  "logout": {
+   "body": null,
+   "headers": [],
+   "method": "POST",
+   "namespace": "auth",
+   "paged": false,
+   "path": "/auth/logout",
+   "path_params": [],
+   "query": {},
+   "responses": {
+    "200": {
+     "properties": {
+      "message": {
+       "type": "string"
+      }
+     },
+     "type": "object"
+    }
+   },
+   "role": "frontline_user",
+   "summary": "Sign out"
+  },
+  "reactivateCompany": {
+   "body": null,
+   "headers": [],
+   "method": "POST",
+   "namespace": "companies",
+   "paged": false,
+   "path": "/companies/{companyId}/reactivate",
+   "path_params": [
+    "companyId"
+   ],
+   "query": {},
+   "responses": {
+    "200": {
+     "$ref": "#/components/schemas/CompanyResponse"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "Reactivate a company"
+  },
+  "reactivateCompanyUser": {
+   "body": null,
+   "headers": [],
+   "method": "POST",
+   "namespace": "users",
+   "paged": false,
+   "path": "/companies/{companyId}/users/{userId}/reactivate",
+   "path_params": [
+    "companyId",
+    "userId"
+   ],
+   "query": {},
+   "responses": {
+    "200": {
+     "$ref": "#/components/schemas/CompanyUserResponse"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "Reactivate a user"
+  },
+  "reactivateConnector": {
+   "body": null,
+   "headers": [],
+   "method": "POST",
+   "namespace": "connectors",
+   "paged": false,
+   "path": "/locations/{locationId}/connectors/{connectorId}/reactivate",
+   "path_params": [
+    "locationId",
+    "connectorId"
+   ],
+   "query": {},
+   "responses": {
+    "202": {
+     "$ref": "#/components/schemas/ConnectorResponse"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "Restart a connector"
+  },
+  "reactivateLocation": {
+   "body": null,
+   "headers": [],
+   "method": "POST",
+   "namespace": "locations",
+   "paged": false,
+   "path": "/companies/{companyId}/locations/{locationId}/reactivate",
+   "path_params": [
+    "companyId",
+    "locationId"
+   ],
+   "query": {},
+   "responses": {
+    "200": {
+     "$ref": "#/components/schemas/LocationResponse"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "Reactivate a location"
+  },
+  "refresh": {
+   "body": {
+    "required": true,
+    "schema": {
+     "$ref": "#/components/schemas/RefreshRequest"
+    }
+   },
+   "headers": [],
+   "method": "POST",
+   "namespace": "auth",
+   "paged": false,
+   "path": "/auth/refresh",
+   "path_params": [],
+   "query": {},
+   "responses": {
+    "200": {
+     "$ref": "#/components/schemas/TokenResponse"
+    }
+   },
+   "role": "frontline_user",
+   "summary": "Renew the access token"
+  },
+  "removeCompanyDomain": {
+   "body": null,
+   "headers": [],
+   "method": "DELETE",
+   "namespace": "sso",
+   "paged": false,
+   "path": "/companies/{companyId}/domains/{domainId}",
+   "path_params": [
+    "companyId",
+    "domainId"
+   ],
+   "query": {},
+   "responses": {
+    "204": null
+   },
+   "role": "reseller_admin",
+   "summary": "Remove a domain claim"
+  },
+  "resendInvitation": {
+   "body": null,
+   "headers": [],
+   "method": "POST",
+   "namespace": "users",
+   "paged": false,
+   "path": "/companies/{companyId}/users/{userId}/resend-invitation",
+   "path_params": [
+    "companyId",
+    "userId"
+   ],
+   "query": {},
+   "responses": {
+    "202": {
+     "properties": {
+      "data": {
+       "properties": {
+        "attributes": {
+         "properties": {
+          "email": {
+           "type": "string"
+          },
+          "invite_expires_at": {
+           "type": "string"
+          },
+          "message": {
+           "type": "string"
+          },
+          "user_id": {
+           "type": "string"
+          }
+         },
+         "type": "object"
+        },
+        "type": {
+         "type": "string"
+        }
+       },
+       "type": "object"
+      }
+     },
+     "type": "object"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "Resend the invitation email"
+  },
+  "resetPassword": {
+   "body": null,
+   "headers": [],
+   "method": "POST",
+   "namespace": "users",
+   "paged": false,
+   "path": "/companies/{companyId}/users/{userId}/reset-password",
+   "path_params": [
+    "companyId",
+    "userId"
+   ],
+   "query": {},
+   "responses": {
+    "202": {
+     "properties": {
+      "data": {
+       "properties": {
+        "attributes": {
+         "properties": {
+          "email": {
+           "type": "string"
+          },
+          "message": {
+           "type": "string"
+          },
+          "user_id": {
+           "type": "string"
+          }
+         },
+         "type": "object"
+        },
+        "type": {
+         "type": "string"
+        }
+       },
+       "type": "object"
+      }
+     },
+     "type": "object"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "Send a password reset email"
+  },
+  "saveAfterCallWebhook": {
+   "body": {
+    "required": true,
+    "schema": {
+     "properties": {
+      "enabled": {
+       "type": "boolean"
+      },
+      "webhook_url": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "webhook_url"
+     ],
+     "type": "object"
+    }
+   },
+   "headers": [],
+   "method": "PUT",
+   "namespace": "webhooks",
+   "paged": false,
+   "path": "/locations/{locationId}/after-call/automation",
+   "path_params": [
+    "locationId"
+   ],
+   "query": {},
+   "responses": {
+    "200": {
+     "$ref": "#/components/schemas/AfterCallWebhookResponse"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "Set the After Call webhook"
+  },
+  "saveFirstAlertConfig": {
+   "body": {
+    "required": true,
+    "schema": {
+     "$ref": "#/components/schemas/FirstAlertConfigUpdate"
+    }
+   },
+   "headers": [],
+   "method": "PUT",
+   "namespace": "first_alert",
+   "paged": false,
+   "path": "/locations/{locationId}/first-alert/config",
+   "path_params": [
+    "locationId"
+   ],
+   "query": {},
+   "responses": {
+    "200": {
+     "$ref": "#/components/schemas/FirstAlertConfigResponse"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "Set monitored numbers and the alert webhook"
+  },
+  "saveInsightsHubSetup": {
+   "body": {
+    "required": true,
+    "schema": {
+     "properties": {
+      "connector_mappings": {
+       "items": {
+        "$ref": "#/components/schemas/NumberMappingInput"
+       },
+       "type": "array"
+      },
+      "group_access": {
+       "items": {
+        "type": "string"
+       },
+       "type": "array"
+      }
+     },
+     "required": [
+      "connector_mappings",
+      "group_access"
+     ],
+     "type": "object"
+    }
+   },
+   "headers": [],
+   "method": "POST",
+   "namespace": "insights_hub",
+   "paged": false,
+   "path": "/locations/{locationId}/insights-hub/setup",
+   "path_params": [
+    "locationId"
+   ],
+   "query": {},
+   "responses": {
+    "201": {
+     "$ref": "#/components/schemas/InsightsHubSetupResponse"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "Save Insights Hub setup"
+  },
+  "saveResellerSmtpSettings": {
+   "body": {
+    "required": true,
+    "schema": {
+     "$ref": "#/components/schemas/SmtpSettingsUpdate"
+    }
+   },
+   "headers": [],
+   "method": "PATCH",
+   "namespace": "resellers",
+   "paged": false,
+   "path": "/resellers/{resellerId}/smtp-settings",
+   "path_params": [
+    "resellerId"
+   ],
+   "query": {},
+   "responses": {
+    "200": {
+     "$ref": "#/components/schemas/SmtpSettingsResponse"
+    },
+    "201": {
+     "$ref": "#/components/schemas/SmtpSettingsResponse"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "Save outbound email (SMTP) settings"
+  },
+  "setAlertDigestPreferences": {
+   "body": {
+    "required": true,
+    "schema": {
+     "$ref": "#/components/schemas/AlertDigest"
+    }
+   },
+   "headers": [],
+   "method": "PUT",
+   "namespace": "first_alert",
+   "paged": false,
+   "path": "/locations/{locationId}/users/{userId}/first-alert/digest-preferences",
+   "path_params": [
+    "locationId",
+    "userId"
+   ],
+   "query": {},
+   "responses": {
+    "200": {
+     "$ref": "#/components/schemas/AlertNotificationPreferences"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "Set a user's alert digest"
+  },
+  "setAlertEmailPreferences": {
+   "body": {
+    "required": true,
+    "schema": {
+     "properties": {
+      "alerts": {
+       "items": {
+        "properties": {
+         "alertId": {
+          "type": "string"
+         },
+         "emailEnabled": {
+          "type": "boolean"
+         }
+        },
+        "required": [
+         "alertId",
+         "emailEnabled"
+        ],
+        "type": "object"
+       },
+       "type": "array"
+      },
+      "masterEnabled": {
+       "type": "boolean"
+      }
+     },
+     "required": [
+      "masterEnabled"
+     ],
+     "type": "object"
+    }
+   },
+   "headers": [],
+   "method": "PUT",
+   "namespace": "first_alert",
+   "paged": false,
+   "path": "/locations/{locationId}/users/{userId}/first-alert/email-preferences",
+   "path_params": [
+    "locationId",
+    "userId"
+   ],
+   "query": {},
+   "responses": {
+    "200": {
+     "$ref": "#/components/schemas/AlertNotificationPreferences"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "Set a user's alert email"
+  },
+  "setUserGroupMembership": {
+   "body": {
+    "required": true,
+    "schema": {
+     "properties": {
+      "group_ids": {
+       "items": {
+        "type": "string"
+       },
+       "type": "array"
+      }
+     },
+     "required": [
+      "group_ids"
+     ],
+     "type": "object"
+    }
+   },
+   "headers": [],
+   "method": "PUT",
+   "namespace": "groups",
+   "paged": false,
+   "path": "/locations/{locationId}/users/{userId}/group-membership",
+   "path_params": [
+    "locationId",
+    "userId"
+   ],
+   "query": {},
+   "responses": {
+    "200": {
+     "$ref": "#/components/schemas/GroupMembershipList"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "Set a user's groups at a location"
+  },
+  "setUserNumberMappings": {
+   "body": {
+    "required": true,
+    "schema": {
+     "properties": {
+      "mappings": {
+       "items": {
+        "$ref": "#/components/schemas/NumberMappingInput"
+       },
+       "type": "array"
+      }
+     },
+     "required": [
+      "mappings"
+     ],
+     "type": "object"
+    }
+   },
+   "headers": [],
+   "method": "PUT",
+   "namespace": "users",
+   "paged": false,
+   "path": "/companies/{companyId}/users/{userId}/connector-mappings",
+   "path_params": [
+    "companyId",
+    "userId"
+   ],
+   "query": {},
+   "responses": {
+    "200": {
+     "properties": {
+      "data": {
+       "items": {
+        "$ref": "#/components/schemas/NumberMapping"
+       },
+       "type": "array"
+      }
+     },
+     "type": "object"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "Set a user's numbers"
+  },
+  "testAfterCallWebhook": {
+   "body": null,
+   "headers": [],
+   "method": "POST",
+   "namespace": "webhooks",
+   "paged": false,
+   "path": "/locations/{locationId}/after-call/automation/test",
+   "path_params": [
+    "locationId"
+   ],
+   "query": {},
+   "responses": {
+    "200": {
+     "properties": {
+      "data": {
+       "properties": {
+        "http_status": {
+         "type": "integer"
+        },
+        "response_time_ms": {
+         "type": "integer"
+        },
+        "success": {
+         "type": "boolean"
+        }
+       },
+       "type": "object"
+      }
+     },
+     "type": "object"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "Send a test After Call event"
+  },
+  "testConnector": {
+   "body": {
+    "required": true,
+    "schema": {
+     "properties": {
+      "config": {
+       "$ref": "#/components/schemas/NetSapiensConfigInput"
+      },
+      "connector_id": {
+       "type": "string"
+      },
+      "type": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "type",
+      "config"
+     ],
+     "type": "object"
+    }
+   },
+   "headers": [],
+   "method": "POST",
+   "namespace": "connectors",
+   "paged": false,
+   "path": "/locations/{locationId}/connectors/test",
+   "path_params": [
+    "locationId"
+   ],
+   "query": {},
+   "responses": {
+    "200": {
+     "properties": {
+      "data": {
+       "properties": {
+        "success": {
+         "type": "boolean"
+        }
+       },
+       "type": "object"
+      }
+     },
+     "type": "object"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "Dry-run a connector"
+  },
+  "testFirstAlertWebhook": {
+   "body": {
+    "required": true,
+    "schema": {
+     "properties": {
+      "url": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "url"
+     ],
+     "type": "object"
+    }
+   },
+   "headers": [],
+   "method": "POST",
+   "namespace": "first_alert",
+   "paged": false,
+   "path": "/locations/{locationId}/first-alert/config/test-webhook",
+   "path_params": [
+    "locationId"
+   ],
+   "query": {},
+   "responses": {
+    "200": {
+     "properties": {
+      "data": {
+       "properties": {
+        "status_code": {
+         "type": "integer"
+        },
+        "success": {
+         "type": "boolean"
+        }
+       },
+       "type": "object"
+      }
+     },
+     "type": "object"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "Test the alert webhook"
+  },
+  "testIdentityProvider": {
+   "body": null,
+   "headers": [],
+   "method": "POST",
+   "namespace": "sso",
+   "paged": false,
+   "path": "/companies/{companyId}/identity-provider/test",
+   "path_params": [
+    "companyId"
+   ],
+   "query": {},
+   "responses": {
+    "200": {
+     "properties": {
+      "data": {
+       "properties": {
+        "checks": {
+         "items": {
+          "properties": {
+           "detail": {
+            "type": "string"
+           },
+           "name": {
+            "type": "string"
+           },
+           "outcome": {
+            "type": "string"
+           }
+          },
+          "type": "object"
+         },
+         "type": "array"
+        },
+        "reachable": {
+         "type": "boolean"
+        }
+       },
+       "type": "object"
+      }
+     },
+     "type": "object"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "Test the identity provider connection"
+  },
+  "updateAlertRule": {
+   "body": {
+    "required": true,
+    "schema": {
+     "$ref": "#/components/schemas/AlertRuleUpdate"
+    }
+   },
+   "headers": [],
+   "method": "PATCH",
+   "namespace": "first_alert",
+   "paged": false,
+   "path": "/locations/{locationId}/first-alert/rules/{ruleId}",
+   "path_params": [
+    "locationId",
+    "ruleId"
+   ],
+   "query": {},
+   "responses": {
+    "200": {
+     "$ref": "#/components/schemas/AlertRuleResponse"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "Update an alert rule"
+  },
+  "updateCompany": {
+   "body": {
+    "required": true,
+    "schema": {
+     "$ref": "#/components/schemas/CompanyUpdate"
+    }
+   },
+   "headers": [],
+   "method": "PATCH",
+   "namespace": "companies",
+   "paged": false,
+   "path": "/companies/{companyId}",
+   "path_params": [
+    "companyId"
+   ],
+   "query": {},
+   "responses": {
+    "200": {
+     "$ref": "#/components/schemas/CompanyResponse"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "Update a company"
+  },
+  "updateCompanyBranding": {
+   "body": {
+    "required": true,
+    "schema": {
+     "$ref": "#/components/schemas/CompanyBrandingUpdate"
+    }
+   },
+   "headers": [],
+   "method": "PATCH",
+   "namespace": "companies",
+   "paged": false,
+   "path": "/companies/{companyId}/branding",
+   "path_params": [
+    "companyId"
+   ],
+   "query": {},
+   "responses": {
+    "200": {
+     "$ref": "#/components/schemas/CompanyBrandingResponse"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "Update company branding overrides"
+  },
+  "updateCompanyUser": {
+   "body": {
+    "required": true,
+    "schema": {
+     "$ref": "#/components/schemas/UserUpdate"
+    }
+   },
+   "headers": [],
+   "method": "PATCH",
+   "namespace": "users",
+   "paged": false,
+   "path": "/companies/{companyId}/users/{userId}",
+   "path_params": [
+    "companyId",
+    "userId"
+   ],
+   "query": {},
+   "responses": {
+    "200": {
+     "$ref": "#/components/schemas/CompanyUserResponse"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "Update a user, role or locations"
+  },
+  "updateConnector": {
+   "body": {
+    "required": true,
+    "schema": {
+     "properties": {
+      "config": {
+       "$ref": "#/components/schemas/NetSapiensConfigInput"
+      },
+      "name": {
+       "type": "string"
+      }
+     },
+     "type": "object"
+    }
+   },
+   "headers": [],
+   "method": "PATCH",
+   "namespace": "connectors",
+   "paged": false,
+   "path": "/locations/{locationId}/connectors/{connectorId}",
+   "path_params": [
+    "locationId",
+    "connectorId"
+   ],
+   "query": {},
+   "responses": {
+    "200": {
+     "$ref": "#/components/schemas/ConnectorResponse"
+    },
+    "202": {
+     "$ref": "#/components/schemas/ConnectorResponse"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "Update a connector"
+  },
+  "updateInsightsHubConfig": {
+   "body": {
+    "required": true,
+    "schema": {
+     "properties": {
+      "monitor_all_numbers": {
+       "type": "boolean"
+      }
+     },
+     "required": [
+      "monitor_all_numbers"
+     ],
+     "type": "object"
+    }
+   },
+   "headers": [],
+   "method": "PATCH",
+   "namespace": "insights_hub",
+   "paged": false,
+   "path": "/locations/{locationId}/insights-hub/config",
+   "path_params": [
+    "locationId"
+   ],
+   "query": {},
+   "responses": {
+    "200": {
+     "$ref": "#/components/schemas/InsightsHubConfigResponse"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "Set Insights Hub coverage"
+  },
+  "updateInsightsHubSetup": {
+   "body": {
+    "required": true,
+    "schema": {
+     "properties": {
+      "connector_mappings": {
+       "items": {
+        "$ref": "#/components/schemas/NumberMappingInput"
+       },
+       "type": "array"
+      },
+      "group_access": {
+       "items": {
+        "type": "string"
+       },
+       "type": "array"
+      }
+     },
+     "type": "object"
+    }
+   },
+   "headers": [],
+   "method": "PATCH",
+   "namespace": "insights_hub",
+   "paged": false,
+   "path": "/locations/{locationId}/insights-hub/setup",
+   "path_params": [
+    "locationId"
+   ],
+   "query": {},
+   "responses": {
+    "200": {
+     "$ref": "#/components/schemas/InsightsHubSetupResponse"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "Update Insights Hub setup"
+  },
+  "updateLocation": {
+   "body": {
+    "required": true,
+    "schema": {
+     "$ref": "#/components/schemas/LocationUpdate"
+    }
+   },
+   "headers": [],
+   "method": "PATCH",
+   "namespace": "locations",
+   "paged": false,
+   "path": "/companies/{companyId}/locations/{locationId}",
+   "path_params": [
+    "companyId",
+    "locationId"
+   ],
+   "query": {},
+   "responses": {
+    "200": {
+     "$ref": "#/components/schemas/LocationResponse"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "Update a location"
+  },
+  "updateResellerBranding": {
+   "body": {
+    "required": true,
+    "schema": {
+     "$ref": "#/components/schemas/ResellerBrandingUpdate"
+    }
+   },
+   "headers": [],
+   "method": "PATCH",
+   "namespace": "resellers",
+   "paged": false,
+   "path": "/resellers/{resellerId}/branding",
+   "path_params": [
+    "resellerId"
+   ],
+   "query": {},
+   "responses": {
+    "200": {
+     "$ref": "#/components/schemas/ResellerBrandingResponse"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "Update reseller branding"
+  },
+  "updateUserAfterCallSettings": {
+   "body": {
+    "required": true,
+    "schema": {
+     "$ref": "#/components/schemas/AfterCallSettingsUpdate"
+    }
+   },
+   "headers": [],
+   "method": "PATCH",
+   "namespace": "after_call_settings",
+   "paged": false,
+   "path": "/locations/{locationId}/users/{userId}/after-call-settings",
+   "path_params": [
+    "locationId",
+    "userId"
+   ],
+   "query": {},
+   "responses": {
+    "200": {
+     "$ref": "#/components/schemas/AfterCallSettingsResponse"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "Update a user's After Call settings"
+  },
+  "updateUserGroup": {
+   "body": {
+    "required": true,
+    "schema": {
+     "properties": {
+      "group_name": {
+       "type": "string"
+      },
+      "member_ids": {
+       "items": {
+        "type": "string"
+       },
+       "type": "array"
+      }
+     },
+     "type": "object"
+    }
+   },
+   "headers": [],
+   "method": "PATCH",
+   "namespace": "groups",
+   "paged": false,
+   "path": "/locations/{locationId}/user-groups/{groupId}",
+   "path_params": [
+    "locationId",
+    "groupId"
+   ],
+   "query": {},
+   "responses": {
+    "200": {
+     "$ref": "#/components/schemas/UserGroupResponse"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "Rename a group or set its members"
+  },
+  "verifyDomain": {
+   "body": null,
+   "headers": [],
+   "method": "POST",
+   "namespace": "sso",
+   "paged": false,
+   "path": "/companies/{companyId}/domains/{domainId}/verifications",
+   "path_params": [
+    "companyId",
+    "domainId"
+   ],
+   "query": {},
+   "responses": {
+    "200": {
+     "properties": {
+      "data": {
+       "$ref": "#/components/schemas/DomainVerification"
+      }
+     },
+     "type": "object"
+    }
+   },
+   "role": "reseller_admin",
+   "summary": "Check the TXT record now"
+  }
+ },
+ "schemas": {
+  "AfterCallSettingsResponse": {
+   "properties": {
+    "data": {
+     "properties": {
+      "connector_mappings": {
+       "items": {
+        "properties": {
+         "connector_id": {
+          "type": "string"
+         },
+         "connector_name": {
+          "type": "string"
+         },
+         "connector_status": {
+          "$ref": "#/components/schemas/ConnectorStatus"
+         },
+         "monitored_numbers": {
+          "items": {
+           "type": "string"
+          },
+          "type": "array"
+         }
+        },
+        "type": "object"
+       },
+       "type": "array"
+      },
+      "digest_frequency": {
+       "type": "string"
+      },
+      "digest_time_format": {
+       "type": "string"
+      },
+      "eoc_enabled": {
+       "type": "boolean"
+      },
+      "eod_enabled": {
+       "type": "boolean"
+      },
+      "eod_time": {
+       "type": [
+        "string",
+        "null"
+       ]
+      },
+      "eod_timezone": {
+       "type": [
+        "string",
+        "null"
+       ]
+      },
+      "last_changed_at": {
+       "type": [
+        "string",
+        "null"
+       ]
+      },
+      "last_changed_by": {
+       "type": [
+        "string",
+        "null"
+       ]
+      },
+      "user_id": {
+       "type": "string"
+      }
+     },
+     "type": "object"
+    }
+   },
+   "type": "object"
+  },
+  "AfterCallSettingsUpdate": {
+   "properties": {
+    "connector_mappings": {
+     "items": {
+      "$ref": "#/components/schemas/NumberMappingInput"
+     },
+     "type": "array"
+    },
+    "digest_frequency": {
+     "type": "string"
+    },
+    "digest_time_format": {
+     "type": "string"
+    },
+    "eoc_enabled": {
+     "type": "boolean"
+    },
+    "eod_enabled": {
+     "type": "boolean"
+    },
+    "eod_time": {
+     "type": "string"
+    },
+    "eod_timezone": {
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
+  "AfterCallSummaryEvent": {
+   "properties": {
+    "call": {
+     "properties": {
+      "call_date": {
+       "type": "string"
+      },
+      "call_type": {
+       "type": "string"
+      },
+      "callee_name": {
+       "type": "string"
+      },
+      "callee_number": {
+       "type": "string"
+      },
+      "caller_name": {
+       "type": "string"
+      },
+      "caller_number": {
+       "type": "string"
+      },
+      "duration_seconds": {
+       "type": "integer"
+      },
+      "id": {
+       "type": "string"
+      },
+      "platform": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "id",
+      "call_type",
+      "duration_seconds",
+      "call_date"
+     ],
+     "type": "object"
+    },
+    "is_test": {
+     "type": "boolean"
+    },
+    "location": {
+     "properties": {
+      "company_id": {
+       "type": "string"
+      },
+      "connector_id": {
+       "type": "string"
+      },
+      "id": {
+       "type": "string"
+      }
+     },
+     "type": "object"
+    },
+    "location_id": {
+     "type": "string"
+    },
+    "summary": {
+     "properties": {
+      "action_items": {
+       "items": {
+        "type": "string"
+       },
+       "type": "array"
+      },
+      "key_points": {
+       "items": {
+        "type": "string"
+       },
+       "type": "array"
+      },
+      "sentiment": {
+       "type": "string"
+      },
+      "text": {
+       "type": "string"
+      }
+     },
+     "type": "object"
+    },
+    "timestamp": {
+     "type": "string"
+    },
+    "type": {
+     "type": "string"
+    },
+    "version": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "version",
+    "type",
+    "is_test",
+    "location_id",
+    "timestamp",
+    "call",
+    "location"
+   ],
+   "type": "object"
+  },
+  "AfterCallWebhookResponse": {
+   "properties": {
+    "data": {
+     "properties": {
+      "created_at": {
+       "type": "string"
+      },
+      "enabled": {
+       "type": "boolean"
+      },
+      "id": {
+       "type": "string"
+      },
+      "location_id": {
+       "type": "string"
+      },
+      "updated_at": {
+       "type": "string"
+      },
+      "webhook_url": {
+       "type": "string"
+      }
+     },
+     "type": [
+      "object",
+      "null"
+     ]
+    }
+   },
+   "type": "object"
+  },
+  "Alert": {
+   "properties": {
+    "call_date": {
+     "type": "string"
+    },
+    "call_id": {
+     "type": "string"
+    },
+    "callee_name": {
+     "type": "string"
+    },
+    "callee_number": {
+     "type": "string"
+    },
+    "caller_name": {
+     "type": "string"
+    },
+    "caller_number": {
+     "type": "string"
+    },
+    "caller_timezone": {
+     "type": "string"
+    },
+    "id": {
+     "type": "string"
+    },
+    "keywords": {
+     "items": {
+      "type": "string"
+     },
+     "type": "array"
+    },
+    "sentiment": {
+     "type": "string"
+    },
+    "sentiment_label": {
+     "type": "string"
+    },
+    "sentiment_score": {
+     "type": [
+      "integer",
+      "null"
+     ]
+    },
+    "summary": {
+     "type": "string"
+    },
+    "topics": {
+     "items": {
+      "type": "string"
+     },
+     "type": "array"
+    }
+   },
+   "type": "object"
+  },
+  "AlertDigest": {
+   "properties": {
+    "enabled": {
+     "type": "boolean"
+    },
+    "frequency": {
+     "type": "string"
+    },
+    "sendTime": {
+     "type": "string"
+    },
+    "timeFormat": {
+     "type": "string"
+    },
+    "timezone": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "enabled",
+    "frequency",
+    "sendTime",
+    "timezone"
+   ],
+   "type": "object"
+  },
+  "AlertList": {
+   "properties": {
+    "data": {
+     "properties": {
+      "alerts": {
+       "items": {
+        "$ref": "#/components/schemas/Alert"
+       },
+       "type": "array"
+      },
+      "summary": {
+       "properties": {
+        "total": {
+         "type": "integer"
+        }
+       },
+       "type": "object"
+      }
+     },
+     "type": "object"
+    },
+    "meta": {
+     "$ref": "#/components/schemas/Meta"
+    }
+   },
+   "type": "object"
+  },
+  "AlertNotificationPreferences": {
+   "properties": {
+    "digest": {
+     "properties": {
+      "enabled": {
+       "type": "boolean"
+      },
+      "frequency": {
+       "type": "string"
+      },
+      "sendTime": {
+       "type": "string"
+      },
+      "timeFormat": {
+       "type": "string"
+      },
+      "timezone": {
+       "type": "string"
+      }
+     },
+     "type": "object"
+    },
+    "emailNotifications": {
+     "properties": {
+      "alerts": {
+       "items": {
+        "properties": {
+         "alertId": {
+          "type": "string"
+         },
+         "alertName": {
+          "type": "string"
+         },
+         "description": {
+          "type": "string"
+         },
+         "emailEnabled": {
+          "type": "boolean"
+         },
+         "severity": {
+          "type": "string"
+         },
+         "trigger": {
+          "type": "string"
+         }
+        },
+        "type": "object"
+       },
+       "type": "array"
+      },
+      "masterEnabled": {
+       "type": "boolean"
+      }
+     },
+     "type": "object"
+    }
+   },
+   "type": "object"
+  },
+  "AlertRule": {
+   "properties": {
+    "created_at": {
+     "type": "string"
+    },
+    "enabled": {
+     "type": "boolean"
+    },
+    "groups": {
+     "items": {
+      "properties": {
+       "group_name": {
+        "type": "string"
+       },
+       "id": {
+        "type": "string"
+       }
+      },
+      "type": "object"
+     },
+     "type": "array"
+    },
+    "id": {
+     "type": "string"
+    },
+    "is_default": {
+     "type": "boolean"
+    },
+    "location_id": {
+     "type": "string"
+    },
+    "match_logic": {
+     "type": "string"
+    },
+    "name": {
+     "type": "string"
+    },
+    "priority": {
+     "type": "string"
+    },
+    "trigger_types": {
+     "items": {
+      "type": "string"
+     },
+     "type": "array"
+    },
+    "triggers": {
+     "items": {
+      "$ref": "#/components/schemas/Trigger"
+     },
+     "type": "array"
+    },
+    "updated_at": {
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
+  "AlertRuleCreate": {
+   "properties": {
+    "enabled": {
+     "type": "boolean"
+    },
+    "group_ids": {
+     "items": {
+      "type": "string"
+     },
+     "type": "array"
+    },
+    "match_logic": {
+     "type": "string"
+    },
+    "name": {
+     "type": "string"
+    },
+    "priority": {
+     "type": "string"
+    },
+    "triggers": {
+     "items": {
+      "$ref": "#/components/schemas/Trigger"
+     },
+     "type": "array"
+    }
+   },
+   "required": [
+    "name",
+    "priority",
+    "triggers"
+   ],
+   "type": "object"
+  },
+  "AlertRuleList": {
+   "properties": {
+    "data": {
+     "items": {
+      "$ref": "#/components/schemas/AlertRuleResource"
+     },
+     "type": "array"
+    },
+    "pagination": {
+     "$ref": "#/components/schemas/Pagination"
+    }
+   },
+   "type": "object"
+  },
+  "AlertRuleResource": {
+   "properties": {
+    "attributes": {
+     "$ref": "#/components/schemas/AlertRule"
+    },
+    "type": {
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
+  "AlertRuleResponse": {
+   "properties": {
+    "data": {
+     "$ref": "#/components/schemas/AlertRuleResource"
+    }
+   },
+   "type": "object"
+  },
+  "AlertRuleUpdate": {
+   "properties": {
+    "enabled": {
+     "type": "boolean"
+    },
+    "group_ids": {
+     "items": {
+      "type": "string"
+     },
+     "type": "array"
+    },
+    "match_logic": {
+     "type": "string"
+    },
+    "name": {
+     "type": "string"
+    },
+    "priority": {
+     "type": "string"
+    },
+    "triggers": {
+     "items": {
+      "$ref": "#/components/schemas/Trigger"
+     },
+     "type": "array"
+    }
+   },
+   "type": "object"
+  },
+  "AlertsDashboardResponse": {
+   "properties": {
+    "data": {
+     "properties": {
+      "kpis": {
+       "properties": {
+        "alert_rate": {
+         "type": "number"
+        },
+        "monitored": {
+         "type": "integer"
+        },
+        "new_alerts": {
+         "type": "integer"
+        }
+       },
+       "type": "object"
+      },
+      "recent_alerts": {
+       "items": {
+        "$ref": "#/components/schemas/Alert"
+       },
+       "type": "array"
+      },
+      "top_triggered": {
+       "items": {
+        "properties": {
+         "count": {
+          "type": "integer"
+         },
+         "keyword": {
+          "type": "string"
+         }
+        },
+        "type": "object"
+       },
+       "type": "array"
+      }
+     },
+     "type": "object"
+    }
+   },
+   "type": "object"
+  },
+  "BareError": {
+   "properties": {
+    "error": {
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
+  "CallDetailResponse": {
+   "properties": {
+    "data": {
+     "properties": {
+      "analysis": {
+       "properties": {
+        "sentiment": {
+         "properties": {
+          "overall": {
+           "type": "string"
+          }
+         },
+         "type": "object"
+        },
+        "summary": {
+         "properties": {
+          "action_items": {
+           "items": {
+            "type": "string"
+           },
+           "type": "array"
+          },
+          "key_points": {
+           "items": {
+            "type": "string"
+           },
+           "type": "array"
+          },
+          "text": {
+           "type": "string"
+          }
+         },
+         "type": "object"
+        },
+        "topics": {
+         "items": {
+          "properties": {
+           "name": {
+            "type": "string"
+           }
+          },
+          "type": "object"
+         },
+         "type": [
+          "array",
+          "null"
+         ]
+        }
+       },
+       "type": [
+        "object",
+        "null"
+       ]
+      },
+      "call_date": {
+       "type": "string"
+      },
+      "call_outcome": {
+       "type": "string"
+      },
+      "call_type": {
+       "type": "string"
+      },
+      "callee_name": {
+       "type": [
+        "string",
+        "null"
+       ]
+      },
+      "callee_number": {
+       "type": [
+        "string",
+        "null"
+       ]
+      },
+      "caller_name": {
+       "type": [
+        "string",
+        "null"
+       ]
+      },
+      "caller_number": {
+       "type": [
+        "string",
+        "null"
+       ]
+      },
+      "caller_timezone": {
+       "type": [
+        "string",
+        "null"
+       ]
+      },
+      "duration": {
+       "type": "integer"
+      },
+      "has_more_tasks": {
+       "type": "boolean"
+      },
+      "id": {
+       "type": "string"
+      },
+      "leg_count": {
+       "type": "integer"
+      },
+      "platform": {
+       "type": "string"
+      },
+      "sentiment": {
+       "$ref": "#/components/schemas/CallSentiment"
+      },
+      "sentiment_label": {
+       "type": "string"
+      },
+      "sentiment_score": {
+       "type": [
+        "integer",
+        "null"
+       ]
+      },
+      "summary": {
+       "type": [
+        "string",
+        "null"
+       ]
+      },
+      "task_count": {
+       "type": "integer"
+      },
+      "tasks": {
+       "items": {
+        "properties": {
+         "assignee_user": {
+          "$ref": "#/components/schemas/TaskUser"
+         },
+         "description": {
+          "type": [
+           "string",
+           "null"
+          ]
+         },
+         "due_date": {
+          "type": [
+           "string",
+           "null"
+          ]
+         },
+         "id": {
+          "type": "string"
+         },
+         "source": {
+          "type": "string"
+         },
+         "status": {
+          "type": "string"
+         },
+         "title": {
+          "type": "string"
+         }
+        },
+        "type": "object"
+       },
+       "type": "array"
+      },
+      "vcon": {
+       "properties": {
+        "recording_mime_type": {
+         "type": [
+          "string",
+          "null"
+         ]
+        },
+        "recording_url": {
+         "type": [
+          "string",
+          "null"
+         ]
+        },
+        "recording_url_expires_at": {
+         "type": [
+          "string",
+          "null"
+         ]
+        }
+       },
+       "type": "object"
+      }
+     },
+     "type": "object"
+    }
+   },
+   "type": "object"
+  },
+  "CallList": {
+   "properties": {
+    "data": {
+     "properties": {
+      "calls": {
+       "items": {
+        "$ref": "#/components/schemas/CallListItem"
+       },
+       "type": "array"
+      },
+      "summary": {
+       "properties": {
+        "completed_calls": {
+         "type": "integer"
+        },
+        "missed_calls": {
+         "type": "integer"
+        },
+        "pending": {
+         "type": "integer"
+        },
+        "tasks_done": {
+         "type": "integer"
+        },
+        "total_calls": {
+         "type": "integer"
+        },
+        "total_duration": {
+         "type": "integer"
+        },
+        "total_tasks": {
+         "type": "integer"
+        }
+       },
+       "type": "object"
+      }
+     },
+     "type": "object"
+    },
+    "meta": {
+     "$ref": "#/components/schemas/Meta"
+    }
+   },
+   "type": "object"
+  },
+  "CallListItem": {
+   "properties": {
+    "call_date": {
+     "type": "string"
+    },
+    "call_type": {
+     "type": "string"
+    },
+    "callee_name": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "callee_number": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "caller_name": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "caller_number": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "caller_timezone": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "completed_task_count": {
+     "type": "integer"
+    },
+    "duration": {
+     "type": "integer"
+    },
+    "highlights": {
+     "items": {
+      "type": "string"
+     },
+     "type": "array"
+    },
+    "id": {
+     "type": "string"
+    },
+    "leg_count": {
+     "type": "integer"
+    },
+    "location_id": {
+     "type": "string"
+    },
+    "sentiment": {
+     "$ref": "#/components/schemas/CallSentiment"
+    },
+    "sentiment_label": {
+     "type": "string"
+    },
+    "sentiment_score": {
+     "type": [
+      "integer",
+      "null"
+     ]
+    },
+    "status": {
+     "type": "string"
+    },
+    "summary": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "task_count": {
+     "type": "integer"
+    },
+    "top_highlight": {
+     "type": [
+      "string",
+      "null"
+     ]
+    }
+   },
+   "type": "object"
+  },
+  "CallSentiment": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "Company": {
+   "properties": {
+    "address": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "company_code": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "company_name": {
+     "type": "string"
+    },
+    "created_at": {
+     "type": "string"
+    },
+    "enabled_products": {
+     "items": {
+      "$ref": "#/components/schemas/ProductKey"
+     },
+     "type": "array"
+    },
+    "id": {
+     "type": "string"
+    },
+    "is_active": {
+     "type": "boolean"
+    },
+    "location_count": {
+     "type": "integer"
+    },
+    "mfa_available": {
+     "type": "boolean"
+    },
+    "mfa_enforced": {
+     "type": "boolean"
+    },
+    "primary_admin_contact_email": {
+     "type": "string"
+    },
+    "primary_admin_contact_name": {
+     "type": "string"
+    },
+    "primary_admin_contact_phone": {
+     "type": "string"
+    },
+    "reseller_id": {
+     "type": "string"
+    },
+    "reseller_name": {
+     "type": "string"
+    },
+    "updated_at": {
+     "type": "string"
+    },
+    "user_count": {
+     "type": "integer"
+    },
+    "vertical": {
+     "type": [
+      "string",
+      "null"
+     ]
+    }
+   },
+   "type": "object"
+  },
+  "CompanyBrandingResponse": {
+   "properties": {
+    "data": {
+     "properties": {
+      "attributes": {
+       "properties": {
+        "company_id": {
+         "type": "string"
+        },
+        "company_logo_url": {
+         "type": [
+          "string",
+          "null"
+         ]
+        },
+        "copyright_text": {
+         "type": [
+          "string",
+          "null"
+         ]
+        },
+        "created_at": {
+         "type": [
+          "string",
+          "null"
+         ]
+        },
+        "display_name": {
+         "type": [
+          "string",
+          "null"
+         ]
+        },
+        "email_header_logo_url": {
+         "type": [
+          "string",
+          "null"
+         ]
+        },
+        "favicon_url": {
+         "type": [
+          "string",
+          "null"
+         ]
+        },
+        "primary_accent_color": {
+         "type": [
+          "string",
+          "null"
+         ]
+        },
+        "privacy_policy_url": {
+         "type": [
+          "string",
+          "null"
+         ]
+        },
+        "secondary_accent_color": {
+         "type": [
+          "string",
+          "null"
+         ]
+        },
+        "support_email": {
+         "type": [
+          "string",
+          "null"
+         ]
+        },
+        "terms_of_service_url": {
+         "type": [
+          "string",
+          "null"
+         ]
+        },
+        "updated_at": {
+         "type": [
+          "string",
+          "null"
+         ]
+        }
+       },
+       "type": "object"
+      },
+      "type": {
+       "type": "string"
+      }
+     },
+     "type": "object"
+    }
+   },
+   "type": "object"
+  },
+  "CompanyBrandingUpdate": {
+   "properties": {
+    "copyright_text": {
+     "type": "string"
+    },
+    "display_name": {
+     "type": "string"
+    },
+    "primary_accent_color": {
+     "type": "string"
+    },
+    "privacy_policy_url": {
+     "type": "string"
+    },
+    "secondary_accent_color": {
+     "type": "string"
+    },
+    "support_email": {
+     "type": "string"
+    },
+    "terms_of_service_url": {
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
+  "CompanyConnectorList": {
+   "properties": {
+    "data": {
+     "items": {
+      "$ref": "#/components/schemas/ConnectorListItem"
+     },
+     "type": "array"
+    },
+    "errors": {
+     "items": {
+      "properties": {
+       "id": {
+        "type": "string"
+       },
+       "location_name": {
+        "type": "string"
+       },
+       "name": {
+        "type": "string"
+       },
+       "status_message": {
+        "type": [
+         "string",
+         "null"
+        ]
+       },
+       "type": {
+        "type": "string"
+       }
+      },
+      "type": "object"
+     },
+     "type": "array"
+    },
+    "pagination": {
+     "$ref": "#/components/schemas/Pagination"
+    }
+   },
+   "type": "object"
+  },
+  "CompanyCreate": {
+   "properties": {
+    "company_code": {
+     "type": "string"
+    },
+    "company_name": {
+     "type": "string"
+    },
+    "enabled_products": {
+     "items": {
+      "$ref": "#/components/schemas/ProductKey"
+     },
+     "type": "array"
+    },
+    "primary_admin_contact_email": {
+     "type": "string"
+    },
+    "primary_admin_contact_name": {
+     "type": "string"
+    },
+    "primary_admin_contact_phone": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "company_name",
+    "primary_admin_contact_name",
+    "primary_admin_contact_email",
+    "primary_admin_contact_phone"
+   ],
+   "type": "object"
+  },
+  "CompanyCreated": {
+   "properties": {
+    "data": {
+     "$ref": "#/components/schemas/CompanyResource"
+    },
+    "invited_user": {
+     "properties": {
+      "display_name": {
+       "type": "string"
+      },
+      "email": {
+       "type": "string"
+      },
+      "id": {
+       "type": "string"
+      },
+      "invite_expires_at": {
+       "type": "string"
+      },
+      "invited_at": {
+       "type": "string"
+      },
+      "role": {
+       "type": "string"
+      },
+      "status": {
+       "type": "string"
+      }
+     },
+     "type": "object"
+    }
+   },
+   "type": "object"
+  },
+  "CompanyDomain": {
+   "properties": {
+    "domain": {
+     "type": "string"
+    },
+    "id": {
+     "type": "string"
+    },
+    "last_checked_at": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "last_failure_reason": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "status": {
+     "type": "string"
+    },
+    "verification": {
+     "properties": {
+      "name": {
+       "type": "string"
+      },
+      "type": {
+       "type": "string"
+      },
+      "value": {
+       "type": "string"
+      }
+     },
+     "type": "object"
+    },
+    "verified_at": {
+     "type": [
+      "string",
+      "null"
+     ]
+    }
+   },
+   "type": "object"
+  },
+  "CompanyDomainResponse": {
+   "properties": {
+    "data": {
+     "$ref": "#/components/schemas/CompanyDomain"
+    }
+   },
+   "type": "object"
+  },
+  "CompanyList": {
+   "properties": {
+    "data": {
+     "items": {
+      "$ref": "#/components/schemas/CompanyResource"
+     },
+     "type": "array"
+    },
+    "has_more": {
+     "type": "boolean"
+    },
+    "next_cursor": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "total_count": {
+     "type": "integer"
+    }
+   },
+   "type": "object"
+  },
+  "CompanyResource": {
+   "properties": {
+    "attributes": {
+     "$ref": "#/components/schemas/Company"
+    },
+    "type": {
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
+  "CompanyResponse": {
+   "properties": {
+    "data": {
+     "$ref": "#/components/schemas/CompanyResource"
+    }
+   },
+   "type": "object"
+  },
+  "CompanySecuritySettingsResponse": {
+   "properties": {
+    "data": {
+     "properties": {
+      "allowed_ip_ranges": {
+       "items": {
+        "type": "string"
+       },
+       "type": "array"
+      },
+      "min_password_length": {
+       "type": "integer"
+      },
+      "password_expiry_days": {
+       "type": [
+        "integer",
+        "null"
+       ]
+      },
+      "password_policy_inherited_fields": {
+       "items": {
+        "type": "string"
+       },
+       "type": "array"
+      },
+      "password_policy_source": {
+       "type": "string"
+      },
+      "require_numbers": {
+       "type": "boolean"
+      },
+      "require_special_chars": {
+       "type": "boolean"
+      },
+      "require_uppercase": {
+       "type": "boolean"
+      },
+      "session_timeout_minutes": {
+       "type": "integer"
+      }
+     },
+     "type": "object"
+    }
+   },
+   "type": "object"
+  },
+  "CompanyUpdate": {
+   "properties": {
+    "address": {
+     "type": "string"
+    },
+    "company_code": {
+     "type": "string"
+    },
+    "company_name": {
+     "type": "string"
+    },
+    "enabled_products": {
+     "items": {
+      "$ref": "#/components/schemas/ProductKey"
+     },
+     "type": "array"
+    },
+    "mfa_enforced": {
+     "type": "boolean"
+    },
+    "primary_admin_contact_email": {
+     "type": "string"
+    },
+    "primary_admin_contact_name": {
+     "type": "string"
+    },
+    "primary_admin_contact_phone": {
+     "type": "string"
+    },
+    "vertical": {
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
+  "CompanyUser": {
+   "properties": {
+    "activated_at": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "auth_method": {
+     "type": "string"
+    },
+    "company_id": {
+     "type": "string"
+    },
+    "created_at": {
+     "type": "string"
+    },
+    "department": {
+     "type": "string"
+    },
+    "display_name": {
+     "type": "string"
+    },
+    "email": {
+     "type": "string"
+    },
+    "first_name": {
+     "type": "string"
+    },
+    "id": {
+     "type": "string"
+    },
+    "invite_expires_at": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "invited_at": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "last_login_at": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "last_name": {
+     "type": "string"
+    },
+    "locations": {
+     "items": {
+      "properties": {
+       "assigned_at": {
+        "type": "string"
+       },
+       "location_id": {
+        "type": "string"
+       }
+      },
+      "type": "object"
+     },
+     "type": "array"
+    },
+    "phone_number": {
+     "type": "string"
+    },
+    "reseller_id": {
+     "type": "string"
+    },
+    "role": {
+     "type": "string"
+    },
+    "status": {
+     "type": "string"
+    },
+    "updated_at": {
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
+  "CompanyUserList": {
+   "properties": {
+    "data": {
+     "items": {
+      "$ref": "#/components/schemas/CompanyUserResource"
+     },
+     "type": "array"
+    },
+    "pagination": {
+     "$ref": "#/components/schemas/Pagination"
+    }
+   },
+   "type": "object"
+  },
+  "CompanyUserResource": {
+   "properties": {
+    "attributes": {
+     "$ref": "#/components/schemas/CompanyUser"
+    },
+    "type": {
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
+  "CompanyUserResponse": {
+   "properties": {
+    "data": {
+     "$ref": "#/components/schemas/CompanyUserResource"
+    }
+   },
+   "type": "object"
+  },
+  "Connector": {
+   "properties": {
+    "config": {
+     "properties": {
+      "api_url": {
+       "type": "string"
+      },
+      "domain": {
+       "type": "string"
+      }
+     },
+     "type": "object"
+    },
+    "created_at": {
+     "type": "string"
+    },
+    "id": {
+     "type": "string"
+    },
+    "last_synced_at": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "location_id": {
+     "type": "string"
+    },
+    "name": {
+     "type": "string"
+    },
+    "state_reason": {
+     "type": "string"
+    },
+    "status": {
+     "$ref": "#/components/schemas/ConnectorStatus"
+    },
+    "status_display": {
+     "type": "string"
+    },
+    "status_message": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "type": {
+     "type": "string"
+    },
+    "type_display_name": {
+     "type": "string"
+    },
+    "updated_at": {
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
+  "ConnectorList": {
+   "properties": {
+    "data": {
+     "items": {
+      "$ref": "#/components/schemas/ConnectorListItem"
+     },
+     "type": "array"
+    },
+    "pagination": {
+     "$ref": "#/components/schemas/Pagination"
+    }
+   },
+   "type": "object"
+  },
+  "ConnectorListItem": {
+   "properties": {
+    "created_at": {
+     "type": "string"
+    },
+    "id": {
+     "type": "string"
+    },
+    "last_synced_at": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "location_id": {
+     "type": "string"
+    },
+    "location_name": {
+     "type": "string"
+    },
+    "name": {
+     "type": "string"
+    },
+    "state_reason": {
+     "type": "string"
+    },
+    "status": {
+     "$ref": "#/components/schemas/ConnectorStatus"
+    },
+    "status_display": {
+     "type": "string"
+    },
+    "status_message": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "type": {
+     "type": "string"
+    },
+    "type_display_name": {
+     "type": "string"
+    },
+    "updated_at": {
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
+  "ConnectorResponse": {
+   "properties": {
+    "data": {
+     "$ref": "#/components/schemas/Connector"
+    }
+   },
+   "type": "object"
+  },
+  "ConnectorStatus": {
+   "type": "string"
+  },
+  "DomainVerification": {
+   "properties": {
+    "checked_at": {
+     "type": "string"
+    },
+    "failure_reason": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "status": {
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
+  "EdgeError": {
+   "properties": {
+    "message": {
+     "type": "string"
+    },
+    "statusCode": {
+     "type": "integer"
+    }
+   },
+   "type": "object"
+  },
+  "Error": {
+   "properties": {
+    "error": {
+     "properties": {
+      "code": {
+       "type": "string"
+      },
+      "details": {},
+      "message": {
+       "type": "string"
+      },
+      "request_id": {
+       "type": "string"
+      }
+     },
+     "type": "object"
+    }
+   },
+   "required": [
+    "error"
+   ],
+   "type": "object"
+  },
+  "FirstAlertConfigResponse": {
+   "properties": {
+    "data": {
+     "properties": {
+      "connector_mappings": {
+       "items": {
+        "allOf": [
+         {
+          "$ref": "#/components/schemas/NumberMapping"
+         },
+         {
+          "properties": {
+           "id": {
+            "type": "string"
+           }
+          },
+          "type": "object"
+         }
+        ]
+       },
+       "type": "array"
+      },
+      "webhook_url": {
+       "type": [
+        "string",
+        "null"
+       ]
+      }
+     },
+     "type": "object"
+    }
+   },
+   "type": "object"
+  },
+  "FirstAlertConfigUpdate": {
+   "properties": {
+    "connector_mappings": {
+     "items": {
+      "$ref": "#/components/schemas/NumberMappingInput"
+     },
+     "type": "array"
+    },
+    "webhook_url": {
+     "type": [
+      "string",
+      "null"
+     ]
+    }
+   },
+   "required": [
+    "connector_mappings"
+   ],
+   "type": "object"
+  },
+  "GroupMembershipList": {
+   "properties": {
+    "data": {
+     "items": {
+      "properties": {
+       "id": {
+        "type": "string"
+       },
+       "is_member": {
+        "type": "boolean"
+       },
+       "name": {
+        "type": "string"
+       },
+       "product_keys": {
+        "items": {
+         "$ref": "#/components/schemas/ProductKey"
+        },
+        "type": "array"
+       }
+      },
+      "type": "object"
+     },
+     "type": "array"
+    }
+   },
+   "type": "object"
+  },
+  "IdentityProviderCreate": {
+   "properties": {
+    "acknowledgement": {
+     "type": "string"
+    },
+    "client_auth_method": {
+     "type": "string"
+    },
+    "client_id": {
+     "type": "string"
+    },
+    "client_secret": {
+     "type": "string"
+    },
+    "display_name": {
+     "type": "string"
+    },
+    "issuer": {
+     "type": "string"
+    },
+    "secret_expires_at": {
+     "type": "string"
+    },
+    "type": {
+     "type": "string"
+    },
+    "well_known_endpoint": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "type",
+    "display_name",
+    "issuer",
+    "well_known_endpoint",
+    "client_id",
+    "acknowledgement"
+   ],
+   "type": "object"
+  },
+  "IdentityProviderResponse": {
+   "properties": {
+    "data": {
+     "properties": {
+      "client_auth_method": {
+       "type": "string"
+      },
+      "client_id": {
+       "type": "string"
+      },
+      "created_at": {
+       "type": "string"
+      },
+      "display_name": {
+       "type": "string"
+      },
+      "id": {
+       "type": "string"
+      },
+      "instructions": {
+       "items": {
+        "type": "string"
+       },
+       "type": "array"
+      },
+      "is_active": {
+       "type": "boolean"
+      },
+      "issuer": {
+       "type": "string"
+      },
+      "link_callback_uri": {
+       "type": "string"
+      },
+      "secret_held": {
+       "type": "boolean"
+      },
+      "supported_client_auth_methods": {
+       "items": {
+        "type": "string"
+       },
+       "type": "array"
+      },
+      "type": {
+       "type": "string"
+      },
+      "well_known_endpoint": {
+       "type": "string"
+      }
+     },
+     "type": "object"
+    }
+   },
+   "type": "object"
+  },
+  "InsightsDashboardResponse": {
+   "properties": {
+    "data": {
+     "properties": {
+      "stats": {
+       "properties": {
+        "answered_calls": {
+         "type": "integer"
+        },
+        "total_calls": {
+         "type": "integer"
+        },
+        "unanswered_calls": {
+         "type": "integer"
+        }
+       },
+       "type": "object"
+      },
+      "topic_call_volumes": {
+       "items": {
+        "properties": {
+         "call_count": {
+          "type": "integer"
+         },
+         "name": {
+          "type": "string"
+         },
+         "slug": {
+          "type": "string"
+         }
+        },
+        "type": "object"
+       },
+       "type": "array"
+      },
+      "trending_topics": {
+       "items": {
+        "properties": {
+         "call_count": {
+          "type": "integer"
+         },
+         "name": {
+          "type": "string"
+         },
+         "percentage_change": {
+          "type": "integer"
+         },
+         "previous_call_count": {
+          "type": "integer"
+         },
+         "slug": {
+          "type": "string"
+         },
+         "trend_data": {
+          "items": {
+           "properties": {
+            "current": {
+             "type": "integer"
+            },
+            "day": {
+             "type": "string"
+            },
+            "previous": {
+             "type": "integer"
+            }
+           },
+           "type": "object"
+          },
+          "type": "array"
+         }
+        },
+        "type": "object"
+       },
+       "type": "array"
+      }
+     },
+     "type": "object"
+    }
+   },
+   "type": "object"
+  },
+  "InsightsHubConfigResponse": {
+   "properties": {
+    "data": {
+     "properties": {
+      "attributes": {
+       "properties": {
+        "monitor_all_numbers": {
+         "type": "boolean"
+        }
+       },
+       "type": "object"
+      },
+      "type": {
+       "type": "string"
+      }
+     },
+     "type": "object"
+    }
+   },
+   "type": "object"
+  },
+  "InsightsHubSetupResponse": {
+   "properties": {
+    "data": {
+     "properties": {
+      "attributes": {
+       "properties": {
+        "available_connectors": {
+         "items": {
+          "properties": {
+           "id": {
+            "type": "string"
+           },
+           "name": {
+            "type": "string"
+           },
+           "type": {
+            "type": "string"
+           }
+          },
+          "type": "object"
+         },
+         "type": "array"
+        },
+        "connector_mappings": {
+         "items": {
+          "$ref": "#/components/schemas/NumberMapping"
+         },
+         "type": "array"
+        },
+        "group_access": {
+         "items": {
+          "type": "string"
+         },
+         "type": "array"
+        },
+        "groups": {
+         "items": {
+          "properties": {
+           "group_name": {
+            "type": "string"
+           },
+           "has_access": {
+            "type": "boolean"
+           },
+           "id": {
+            "type": "string"
+           }
+          },
+          "type": "object"
+         },
+         "type": "array"
+        }
+       },
+       "type": "object"
+      },
+      "type": {
+       "type": "string"
+      }
+     },
+     "type": "object"
+    }
+   },
+   "type": "object"
+  },
+  "Location": {
+   "properties": {
+    "city": {
+     "type": "string"
+    },
+    "company_id": {
+     "type": "string"
+    },
+    "company_name": {
+     "type": "string"
+    },
+    "country": {
+     "type": "string"
+    },
+    "created_at": {
+     "type": "string"
+    },
+    "enabled_products": {
+     "items": {
+      "$ref": "#/components/schemas/ProductKey"
+     },
+     "type": "array"
+    },
+    "id": {
+     "type": "string"
+    },
+    "is_active": {
+     "type": "boolean"
+    },
+    "location_name": {
+     "type": "string"
+    },
+    "reseller_name": {
+     "type": "string"
+    },
+    "state": {
+     "type": "string"
+    },
+    "street": {
+     "type": "string"
+    },
+    "support_contact_email": {
+     "type": "string"
+    },
+    "support_contact_name": {
+     "type": "string"
+    },
+    "support_contact_phone": {
+     "type": "string"
+    },
+    "updated_at": {
+     "type": "string"
+    },
+    "user_count": {
+     "type": "integer"
+    },
+    "vertical_id": {
+     "type": "string"
+    },
+    "vertical_name": {
+     "type": "string"
+    },
+    "zipcode": {
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
+  "LocationCreate": {
+   "properties": {
+    "city": {
+     "type": "string"
+    },
+    "country": {
+     "type": "string"
+    },
+    "enabled_products": {
+     "items": {
+      "$ref": "#/components/schemas/ProductKey"
+     },
+     "type": "array"
+    },
+    "location_name": {
+     "type": "string"
+    },
+    "state": {
+     "type": "string"
+    },
+    "street": {
+     "type": "string"
+    },
+    "vertical_id": {
+     "type": "string"
+    },
+    "zipcode": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "location_name",
+    "street",
+    "city",
+    "state",
+    "country",
+    "zipcode",
+    "vertical_id"
+   ],
+   "type": "object"
+  },
+  "LocationList": {
+   "properties": {
+    "data": {
+     "items": {
+      "$ref": "#/components/schemas/LocationResource"
+     },
+     "type": "array"
+    },
+    "pagination": {
+     "$ref": "#/components/schemas/Pagination"
+    }
+   },
+   "type": "object"
+  },
+  "LocationResource": {
+   "properties": {
+    "attributes": {
+     "$ref": "#/components/schemas/Location"
+    },
+    "type": {
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
+  "LocationResponse": {
+   "properties": {
+    "data": {
+     "$ref": "#/components/schemas/LocationResource"
+    }
+   },
+   "type": "object"
+  },
+  "LocationUpdate": {
+   "properties": {
+    "city": {
+     "type": "string"
+    },
+    "country": {
+     "type": "string"
+    },
+    "enabled_products": {
+     "items": {
+      "$ref": "#/components/schemas/ProductKey"
+     },
+     "type": "array"
+    },
+    "location_name": {
+     "type": "string"
+    },
+    "state": {
+     "type": "string"
+    },
+    "street": {
+     "type": "string"
+    },
+    "vertical_id": {
+     "type": "string"
+    },
+    "zipcode": {
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
+  "LocationUser": {
+   "properties": {
+    "assigned_at": {
+     "type": "string"
+    },
+    "company_id": {
+     "type": "string"
+    },
+    "created_at": {
+     "type": "string"
+    },
+    "display_name": {
+     "type": "string"
+    },
+    "email": {
+     "type": "string"
+    },
+    "enabled_products": {
+     "items": {
+      "$ref": "#/components/schemas/ProductKey"
+     },
+     "type": [
+      "array",
+      "null"
+     ]
+    },
+    "first_name": {
+     "type": "string"
+    },
+    "groups": {
+     "items": {
+      "type": "string"
+     },
+     "type": [
+      "array",
+      "null"
+     ]
+    },
+    "id": {
+     "type": "string"
+    },
+    "invited_at": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "last_name": {
+     "type": "string"
+    },
+    "location_id": {
+     "type": "string"
+    },
+    "location_name": {
+     "type": "string"
+    },
+    "locations": {
+     "items": {
+      "properties": {
+       "assigned_at": {
+        "type": "string"
+       },
+       "location_id": {
+        "type": "string"
+       }
+      },
+      "type": "object"
+     },
+     "type": [
+      "array",
+      "null"
+     ]
+    },
+    "phone_number": {
+     "type": "string"
+    },
+    "role": {
+     "type": "string"
+    },
+    "status": {
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
+  "LocationUserList": {
+   "properties": {
+    "data": {
+     "items": {
+      "$ref": "#/components/schemas/LocationUserResource"
+     },
+     "type": "array"
+    },
+    "pagination": {
+     "$ref": "#/components/schemas/Pagination"
+    }
+   },
+   "type": "object"
+  },
+  "LocationUserResource": {
+   "properties": {
+    "attributes": {
+     "$ref": "#/components/schemas/LocationUser"
+    },
+    "type": {
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
+  "LocationUserResponse": {
+   "properties": {
+    "data": {
+     "$ref": "#/components/schemas/LocationUserResource"
+    }
+   },
+   "type": "object"
+  },
+  "LoginRequest": {
+   "properties": {
+    "email": {
+     "type": "string"
+    },
+    "password": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "email",
+    "password"
+   ],
+   "type": "object"
+  },
+  "Me": {
+   "properties": {
+    "data": {
+     "properties": {
+      "company_id": {
+       "type": [
+        "string",
+        "null"
+       ]
+      },
+      "display_name": {
+       "type": "string"
+      },
+      "email": {
+       "type": "string"
+      },
+      "enabled_products": {
+       "items": {
+        "$ref": "#/components/schemas/ProductKey"
+       },
+       "type": [
+        "array",
+        "null"
+       ]
+      },
+      "first_name": {
+       "type": "string"
+      },
+      "id": {
+       "type": "string"
+      },
+      "last_name": {
+       "type": "string"
+      },
+      "location_ids": {
+       "items": {
+        "type": "string"
+       },
+       "type": [
+        "array",
+        "null"
+       ]
+      },
+      "mfa_available": {
+       "type": "boolean"
+      },
+      "reseller_id": {
+       "type": [
+        "string",
+        "null"
+       ]
+      },
+      "role": {
+       "$ref": "#/components/schemas/Role"
+      },
+      "scopes": {
+       "items": {
+        "type": "string"
+       },
+       "type": "array"
+      },
+      "status": {
+       "type": "string"
+      },
+      "user_type": {
+       "type": "string"
+      }
+     },
+     "type": "object"
+    }
+   },
+   "type": "object"
+  },
+  "Meta": {
+   "properties": {
+    "has_more": {
+     "type": "boolean"
+    },
+    "limit": {
+     "type": "integer"
+    },
+    "next_cursor": {
+     "type": [
+      "string",
+      "null"
+     ]
+    }
+   },
+   "type": "object"
+  },
+  "MfaRequired": {
+   "properties": {
+    "status": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "status"
+   ],
+   "type": "object"
+  },
+  "NetSapiensConfigInput": {
+   "properties": {
+    "api_key": {
+     "type": "string"
+    },
+    "api_url": {
+     "type": "string"
+    },
+    "domain": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "api_url",
+    "domain",
+    "api_key"
+   ],
+   "type": "object"
+  },
+  "NumberMapping": {
+   "properties": {
+    "connector_id": {
+     "type": "string"
+    },
+    "connector_name": {
+     "type": "string"
+    },
+    "connector_type": {
+     "type": "string"
+    },
+    "monitored_numbers": {
+     "items": {
+      "type": "string"
+     },
+     "type": "array"
+    }
+   },
+   "type": "object"
+  },
+  "NumberMappingInput": {
+   "properties": {
+    "connector_id": {
+     "type": "string"
+    },
+    "monitored_numbers": {
+     "items": {
+      "type": "string"
+     },
+     "type": "array"
+    }
+   },
+   "required": [
+    "connector_id",
+    "monitored_numbers"
+   ],
+   "type": "object"
+  },
+  "Pagination": {
+   "properties": {
+    "has_more": {
+     "type": "boolean"
+    },
+    "next_cursor": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "total_count": {
+     "type": "integer"
+    }
+   },
+   "type": "object"
+  },
+  "ProductKey": {
+   "type": "string"
+  },
+  "ProductState": {
+   "properties": {
+    "enabled": {
+     "type": "boolean"
+    },
+    "enabled_at": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "enabled_by": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "name": {
+     "type": "string"
+    },
+    "product_key": {
+     "$ref": "#/components/schemas/ProductKey"
+    }
+   },
+   "type": "object"
+  },
+  "ProductStateList": {
+   "properties": {
+    "data": {
+     "items": {
+      "$ref": "#/components/schemas/ProductState"
+     },
+     "type": "array"
+    }
+   },
+   "type": "object"
+  },
+  "ProductStateResponse": {
+   "properties": {
+    "data": {
+     "$ref": "#/components/schemas/ProductState"
+    }
+   },
+   "type": "object"
+  },
+  "RefreshRequest": {
+   "properties": {
+    "refresh_token": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "refresh_token"
+   ],
+   "type": "object"
+  },
+  "ResellerBrandingResponse": {
+   "properties": {
+    "data": {
+     "properties": {
+      "attributes": {
+       "properties": {
+        "copyright_text": {
+         "type": [
+          "string",
+          "null"
+         ]
+        },
+        "created_at": {
+         "type": [
+          "string",
+          "null"
+         ]
+        },
+        "display_name": {
+         "type": [
+          "string",
+          "null"
+         ]
+        },
+        "email_logo_url": {
+         "type": [
+          "string",
+          "null"
+         ]
+        },
+        "favicon_url": {
+         "type": [
+          "string",
+          "null"
+         ]
+        },
+        "main_logo_url": {
+         "type": [
+          "string",
+          "null"
+         ]
+        },
+        "primary_accent_color": {
+         "type": [
+          "string",
+          "null"
+         ]
+        },
+        "privacy_policy_url": {
+         "type": [
+          "string",
+          "null"
+         ]
+        },
+        "reseller_id": {
+         "type": "string"
+        },
+        "secondary_accent_color": {
+         "type": [
+          "string",
+          "null"
+         ]
+        },
+        "support_email": {
+         "type": [
+          "string",
+          "null"
+         ]
+        },
+        "support_portal_url": {
+         "type": [
+          "string",
+          "null"
+         ]
+        },
+        "terms_of_service_url": {
+         "type": [
+          "string",
+          "null"
+         ]
+        },
+        "updated_at": {
+         "type": [
+          "string",
+          "null"
+         ]
+        }
+       },
+       "type": "object"
+      },
+      "type": {
+       "type": "string"
+      }
+     },
+     "type": "object"
+    }
+   },
+   "type": "object"
+  },
+  "ResellerBrandingUpdate": {
+   "properties": {
+    "copyright_text": {
+     "type": "string"
+    },
+    "display_name": {
+     "type": "string"
+    },
+    "primary_accent_color": {
+     "type": "string"
+    },
+    "privacy_policy_url": {
+     "type": "string"
+    },
+    "secondary_accent_color": {
+     "type": "string"
+    },
+    "support_email": {
+     "type": "string"
+    },
+    "support_portal_url": {
+     "type": "string"
+    },
+    "terms_of_service_url": {
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
+  "Role": {
+   "type": "string"
+  },
+  "SmtpSettingsResponse": {
+   "properties": {
+    "data": {
+     "properties": {
+      "attributes": {
+       "properties": {
+        "created_at": {
+         "type": "string"
+        },
+        "reseller_id": {
+         "type": "string"
+        },
+        "sender_email": {
+         "type": "string"
+        },
+        "sender_name": {
+         "type": "string"
+        },
+        "smtp_host": {
+         "type": "string"
+        },
+        "smtp_password": {
+         "type": "string"
+        },
+        "smtp_port": {
+         "type": "integer"
+        },
+        "smtp_username": {
+         "type": "string"
+        },
+        "updated_at": {
+         "type": "string"
+        }
+       },
+       "type": "object"
+      },
+      "type": {
+       "type": "string"
+      }
+     },
+     "type": "object"
+    }
+   },
+   "type": "object"
+  },
+  "SmtpSettingsUpdate": {
+   "properties": {
+    "sender_email": {
+     "type": "string"
+    },
+    "sender_name": {
+     "type": "string"
+    },
+    "smtp_host": {
+     "type": "string"
+    },
+    "smtp_password": {
+     "type": "string"
+    },
+    "smtp_port": {
+     "type": "integer"
+    },
+    "smtp_username": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "smtp_host",
+    "smtp_port",
+    "sender_name",
+    "sender_email"
+   ],
+   "type": "object"
+  },
+  "Task": {
+   "properties": {
+    "assignee_user": {
+     "$ref": "#/components/schemas/TaskUser"
+    },
+    "call_id": {
+     "type": "string"
+    },
+    "company_id": {
+     "type": "string"
+    },
+    "completed_at": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "created_at": {
+     "type": "string"
+    },
+    "description": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "due_date": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "id": {
+     "type": "string"
+    },
+    "location_id": {
+     "type": "string"
+    },
+    "source": {
+     "type": "string"
+    },
+    "status": {
+     "type": "string"
+    },
+    "title": {
+     "type": "string"
+    },
+    "updated_at": {
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
+  "TaskError": {
+   "properties": {
+    "error": {
+     "properties": {
+      "message": {
+       "type": "string"
+      },
+      "request_id": {
+       "type": "string"
+      },
+      "type": {
+       "type": "string"
+      }
+     },
+     "type": "object"
+    }
+   },
+   "type": "object"
+  },
+  "TaskList": {
+   "properties": {
+    "data": {
+     "items": {
+      "$ref": "#/components/schemas/Task"
+     },
+     "type": "array"
+    },
+    "meta": {
+     "$ref": "#/components/schemas/Meta"
+    },
+    "summary": {
+     "properties": {
+      "done": {
+       "type": "integer"
+      },
+      "in_progress": {
+       "type": "integer"
+      },
+      "overdue": {
+       "type": "integer"
+      },
+      "pending": {
+       "type": "integer"
+      },
+      "total": {
+       "type": "integer"
+      }
+     },
+     "type": "object"
+    }
+   },
+   "type": "object"
+  },
+  "TaskUser": {
+   "properties": {
+    "display_name": {
+     "type": "string"
+    },
+    "email": {
+     "type": "string"
+    },
+    "id": {
+     "type": "string"
+    }
+   },
+   "type": [
+    "object",
+    "null"
+   ]
+  },
+  "TokenResponse": {
+   "properties": {
+    "access_token": {
+     "type": "string"
+    },
+    "expires_in": {
+     "type": "integer"
+    },
+    "password_expired": {
+     "type": "boolean"
+    },
+    "refresh_token": {
+     "type": "string"
+    },
+    "token_type": {
+     "type": "string"
+    },
+    "user": {
+     "properties": {
+      "display_name": {
+       "type": "string"
+      },
+      "email": {
+       "type": "string"
+      },
+      "first_name": {
+       "type": "string"
+      },
+      "id": {
+       "type": "string"
+      },
+      "last_name": {
+       "type": "string"
+      },
+      "reseller_id": {
+       "type": [
+        "string",
+        "null"
+       ]
+      },
+      "role": {
+       "$ref": "#/components/schemas/Role"
+      },
+      "scopes": {
+       "items": {
+        "type": "string"
+       },
+       "type": "array"
+      },
+      "user_type": {
+       "type": "string"
+      }
+     },
+     "type": "object"
+    }
+   },
+   "required": [
+    "access_token",
+    "refresh_token",
+    "token_type",
+    "expires_in",
+    "user"
+   ],
+   "type": "object"
+  },
+  "TopicCallList": {
+   "properties": {
+    "data": {
+     "items": {
+      "properties": {
+       "caller_name": {
+        "type": [
+         "string",
+         "null"
+        ]
+       },
+       "date": {
+        "type": "string"
+       },
+       "id": {
+        "type": "string"
+       },
+       "outcome": {
+        "type": "string"
+       },
+       "phone_number": {
+        "type": [
+         "string",
+         "null"
+        ]
+       },
+       "sentiment": {
+        "type": [
+         "string",
+         "null"
+        ]
+       },
+       "sentiment_label": {
+        "type": "string"
+       },
+       "summary": {
+        "type": [
+         "string",
+         "null"
+        ]
+       }
+      },
+      "type": "object"
+     },
+     "type": "array"
+    },
+    "meta": {
+     "properties": {
+      "has_more": {
+       "type": "boolean"
+      },
+      "next_cursor": {
+       "type": [
+        "string",
+        "null"
+       ]
+      },
+      "total": {
+       "type": "integer"
+      }
+     },
+     "type": "object"
+    }
+   },
+   "type": "object"
+  },
+  "TranscriptResponse": {
+   "properties": {
+    "data": {
+     "properties": {
+      "transcript": {
+       "items": {
+        "properties": {
+         "name": {
+          "type": "string"
+         },
+         "speaker": {
+          "type": "string"
+         },
+         "text": {
+          "type": "string"
+         },
+         "time": {
+          "type": "number"
+         }
+        },
+        "type": "object"
+       },
+       "type": "array"
+      }
+     },
+     "type": "object"
+    }
+   },
+   "type": "object"
+  },
+  "Trigger": {
+   "properties": {
+    "config": {
+     "oneOf": [
+      {
+       "properties": {
+        "operator": {
+         "type": "string"
+        },
+        "threshold": {
+         "type": "integer"
+        }
+       },
+       "required": [
+        "operator",
+        "threshold"
+       ],
+       "type": "object"
+      },
+      {
+       "properties": {
+        "keywords": {
+         "items": {
+          "type": "string"
+         },
+         "type": "array"
+        },
+        "match_logic": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "keywords",
+        "match_logic"
+       ],
+       "type": "object"
+      },
+      {
+       "properties": {
+        "topics": {
+         "items": {
+          "type": "string"
+         },
+         "type": "array"
+        }
+       },
+       "required": [
+        "topics"
+       ],
+       "type": "object"
+      }
+     ]
+    },
+    "id": {
+     "type": "string"
+    },
+    "trigger_type": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "trigger_type",
+    "config"
+   ],
+   "type": "object"
+  },
+  "UserCreate": {
+   "properties": {
+    "auth_method": {
+     "type": "string"
+    },
+    "email": {
+     "type": "string"
+    },
+    "first_name": {
+     "type": "string"
+    },
+    "last_name": {
+     "type": "string"
+    },
+    "location_ids": {
+     "items": {
+      "type": "string"
+     },
+     "type": "array"
+    },
+    "phone_number": {
+     "type": "string"
+    },
+    "role": {
+     "type": "string"
+    },
+    "send_invitation": {
+     "type": "boolean"
+    }
+   },
+   "required": [
+    "email",
+    "first_name",
+    "last_name",
+    "role"
+   ],
+   "type": "object"
+  },
+  "UserGroup": {
+   "properties": {
+    "created_at": {
+     "type": "string"
+    },
+    "group_name": {
+     "type": "string"
+    },
+    "id": {
+     "type": "string"
+    },
+    "location_id": {
+     "type": "string"
+    },
+    "members": {
+     "items": {
+      "properties": {
+       "display_name": {
+        "type": "string"
+       },
+       "email": {
+        "type": "string"
+       },
+       "first_name": {
+        "type": "string"
+       },
+       "id": {
+        "type": "string"
+       },
+       "last_name": {
+        "type": "string"
+       }
+      },
+      "type": "object"
+     },
+     "type": "array"
+    },
+    "updated_at": {
+     "type": "string"
+    },
+    "user_count": {
+     "type": "integer"
+    }
+   },
+   "type": "object"
+  },
+  "UserGroupList": {
+   "properties": {
+    "data": {
+     "items": {
+      "$ref": "#/components/schemas/UserGroupResource"
+     },
+     "type": "array"
+    },
+    "pagination": {
+     "$ref": "#/components/schemas/Pagination"
+    }
+   },
+   "type": "object"
+  },
+  "UserGroupResource": {
+   "properties": {
+    "attributes": {
+     "$ref": "#/components/schemas/UserGroup"
+    },
+    "type": {
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
+  "UserGroupResponse": {
+   "properties": {
+    "data": {
+     "$ref": "#/components/schemas/UserGroupResource"
+    }
+   },
+   "type": "object"
+  },
+  "UserUpdate": {
+   "properties": {
+    "department": {
+     "type": "string"
+    },
+    "first_name": {
+     "type": "string"
+    },
+    "last_name": {
+     "type": "string"
+    },
+    "location_ids": {
+     "items": {
+      "type": "string"
+     },
+     "type": "array"
+    },
+    "phone_number": {
+     "type": "string"
+    },
+    "role": {
+     "type": "string"
+    }
+   },
+   "type": "object"
+  }
+ },
+ "webhooks": {
+  "afterCallSummary": {
+   "$ref": "#/components/schemas/AfterCallSummaryEvent"
+  },
+  "firstAlert": {
+   "additionalProperties": true,
+   "type": "object"
+  }
+ }
+}

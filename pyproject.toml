@@ -1,0 +1,34 @@
+[build-system]
+requires = ["hatchling>=1.18"]
+build-backend = "hatchling.build"
+
+[project]
+name = "intelligence-cloud"
+version = "0.1.0"
+description = "Python client for the Intelligence Cloud partner API: customer lifecycle and conversation intelligence."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+authors = [{ name = "Tresic" }]
+dependencies = ["httpx>=0.27,<1"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: Other/Proprietary License",
+  "Operating System :: OS Independent",
+  "Typing :: Typed",
+]
+
+[project.urls]
+Homepage = "https://docs.intelligence.cloud"
+Documentation = "https://docs.intelligence.cloud/api"
+Source = "https://github.com/tresic-cloud/intelligence-cloud-sdk-python"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/intelligence_cloud"]
+
+[tool.hatch.build.targets.sdist]
+exclude = [".github"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests/unit"]
+markers = ["live: calls the real API (needs IC_LIVE=1)"]
